@@ -40,6 +40,13 @@ interface ChargeModelInterface extends StripeModelInterface
     public function getSource();
 
     /**
+     * @param CardModelInterface $source
+     *
+     * @return $this
+     */
+    public function setSource($source);
+
+    /**
      * @return string
      */
     public function getStatus();
@@ -63,11 +70,6 @@ interface ChargeModelInterface extends StripeModelInterface
      * @return string
      */
     public function getDescription();
-
-    /**
-     * @return array
-     */
-    public function getDispute();
 
     /**
      * @return string

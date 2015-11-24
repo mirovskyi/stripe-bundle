@@ -137,6 +137,11 @@ class InvoiceModel extends StripeModelAbstract implements InvoiceModelInterface
     protected $taxPercent;
 
     /**
+     * @var string
+     */
+    protected $coupon;
+
+    /**
      * @return int
      */
     public function getAmountDue()
@@ -652,6 +657,26 @@ class InvoiceModel extends StripeModelAbstract implements InvoiceModelInterface
     public function setTaxPercent($taxPercent)
     {
         $this->taxPercent = $taxPercent;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCoupon()
+    {
+        return $this->coupon;
+    }
+
+    /**
+     * @param string $coupon
+     *
+     * @return $this
+     */
+    public function setCoupon($coupon)
+    {
+        $this->coupon = $coupon;
 
         return $this;
     }

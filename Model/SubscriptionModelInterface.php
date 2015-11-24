@@ -40,6 +40,13 @@ interface SubscriptionModelInterface extends StripeModelInterface
     public function getCoupon();
 
     /**
+     * @param string $coupon
+     *
+     * @return $this
+     */
+    public function setCoupon($coupon);
+
+    /**
      * @return \DateTime
      */
     public function getEndedAt();
@@ -48,6 +55,13 @@ interface SubscriptionModelInterface extends StripeModelInterface
      * @return string
      */
     public function getPlan();
+
+    /**
+     * @param string $plan
+     *
+     * @return $this
+     */
+    public function setPlan($plan);
 
     /**
      * @return int

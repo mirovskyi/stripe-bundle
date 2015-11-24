@@ -133,4 +133,16 @@ interface InvoiceModelInterface extends StripeModelInterface
      * @return float
      */
     public function getTaxPercent();
+
+    /**
+     * @return string
+     */
+    public function getCoupon();
+
+    /**
+     * @param string $coupon
+     *
+     * @return $this
+     */
+    public function setCoupon($coupon);
 }

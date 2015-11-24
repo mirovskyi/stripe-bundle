@@ -2,36 +2,34 @@
 
 namespace Aimir\StripeBundle\Doctrine;
 
+use Aimir\StripeBundle\ModelManager\ModelManagerInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Aimir\StripeBundle\Model\CardModelInterface;
-use Aimir\StripeBundle\Model\CustomerModelInterface;
-use Aimir\StripeBundle\Model\SubscriptionModelInterface;
 use Stripe\StripeObject;
 
 class CustomerManager extends DoctrineManagerAbstract
 {
     /**
-     * @var CardManager
+     * @var ModelManagerInterface
      */
     protected $cardManager;
 
     /**
-     * @var SubscriptionManager
+     * @var ModelManagerInterface
      */
     protected $subscriptionManager;
 
     /**
-     * @param CardManager $cardManager
+     * @param ModelManagerInterface $cardManager
      */
-    public function setCardManager(CardManager $cardManager)
+    public function setCardManager(ModelManagerInterface $cardManager)
     {
         $this->cardManager = $cardManager;
     }
 
     /**
-     * @param SubscriptionManager $subscriptionManager
+     * @param ModelManagerInterface $subscriptionManager
      */
-    public function setSubscriptionManager(SubscriptionManager $subscriptionManager)
+    public function setSubscriptionManager(ModelManagerInterface $subscriptionManager)
     {
         $this->subscriptionManager = $subscriptionManager;
     }
@@ -39,14 +37,14 @@ class CustomerManager extends DoctrineManagerAbstract
     /**
      * {@inheritdoc}
      */
-    public function save(StripeObject $stripeObject)
+    public function save(StripeObject $stripeObject, $flush = false)
     {
-        $model = parent::save($stripeObject);
+        $model = parent::save($stripeObject, $flush);
         if ($stripeObject['source']) {
-            $this->cardManager->save($stripeObject['source']);
+            $this->cardManager->save($stripeObject['source'], $flush);
         }
         if ($stripeObject['subscription']) {
-            $this->subscriptionManager->save($stripeObject['subscription']);
+            $this->subscriptionManager->save($stripeObject['subscription'], $flush);
         }
 
         return $model;

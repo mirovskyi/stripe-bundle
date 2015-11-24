@@ -59,14 +59,15 @@ abstract class DoctrineManagerAbstract implements ModelManagerInterface
     }
 
     /**
-     *
+     * Create|Update stripe model from stripe object
      *
      * @param StripeObject $stripeObject
+     * @param bool $flush Flush data to storage
      *
      * @return StripeModelInterface
      * @throws \Exception
      */
-    public function save(StripeObject $stripeObject)
+    public function save(StripeObject $stripeObject, $flush = false)
     {
         if (!$model = $this->retrieve($stripeObject['id'])) {
             $model = $this
@@ -76,6 +77,9 @@ abstract class DoctrineManagerAbstract implements ModelManagerInterface
             $this->objectManager->persist($model);
         } else {
             $model->updateFromStripeObject($stripeObject);
+        }
+        if ($flush) {
+            $this->objectManager->flush($model);
         }
 
         return $model;

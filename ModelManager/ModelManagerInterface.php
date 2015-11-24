@@ -15,6 +15,8 @@ interface ModelManagerInterface
     public function create();
 
     /**
+     * Retrieve model object
+     *
      * @param string $stripeId
      *
      * @return StripeModelInterface
@@ -25,8 +27,9 @@ interface ModelManagerInterface
      * Create|Update stripe model from stripe object
      *
      * @param StripeObject $stripeObject
+     * @param bool $flush Flush data to storage
      *
      * @return StripeModelInterface
      */
-    public function save(StripeObject $stripeObject);
+    public function save(StripeObject $stripeObject, $flush = false);
 }

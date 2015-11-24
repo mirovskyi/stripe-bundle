@@ -67,11 +67,6 @@ abstract class ChargeModel extends StripeModelAbstract implements ChargeModelInt
     protected $description;
 
     /**
-     * @var array
-     */
-    protected $dispute;
-
-    /**
      * @var string
      */
     protected $failureCode;
@@ -347,26 +342,6 @@ abstract class ChargeModel extends StripeModelAbstract implements ChargeModelInt
     }
 
     /**
-     * @return array
-     */
-    public function getDispute()
-    {
-        return $this->dispute;
-    }
-
-    /**
-     * @param array $dispute
-     *
-     * @return $this
-     */
-    public function setDispute($dispute)
-    {
-        $this->dispute = $dispute;
-
-        return $this;
-    }
-
-    /**
      * @return string
      */
     public function getFailureCode()
@@ -545,13 +520,12 @@ abstract class ChargeModel extends StripeModelAbstract implements ChargeModelInt
             ->setFailureMessage($object['failure_message'])
             ->setReceiptEmail($object['receipt_email'])
             ->setReceiptNumber($object['receipt_number'])
-            ->setFraudDetails($object['fraud_details'])
+            ->setFraudDetails($object['fraud_details'] ? $object['fraud_details']->serializeParameters() : [])
             ->setDescription($object['description'])
             ->setCaptured($object['captured'])
             ->setRefunded($object['refunded'])
             ->setStatus($object['status'])
             ->setAmountRefunded($object['amount_refunded'])
-            ->setDispute($object['dispute'] ? $object['dispute']->serializeParameters() : [])
             ->setMetadata($object['metadata']->__toArray())
         ;
 

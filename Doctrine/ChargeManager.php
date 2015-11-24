@@ -2,6 +2,7 @@
 
 namespace Aimir\StripeBundle\Doctrine;
 
+use Aimir\StripeBundle\Model\CardModelInterface;
 use Aimir\StripeBundle\Model\ChargeModelInterface;
 use Aimir\StripeBundle\ModelManager\ModelManagerInterface;
 use Stripe\StripeObject;
@@ -24,13 +25,19 @@ class ChargeManager extends DoctrineManagerAbstract
     /**
      * {@inheritdoc}
      */
-    public function save(StripeObject $stripeObject)
+    public function save(StripeObject $stripeObject, $flush = false)
     {
-        $model = parent::save($stripeObject);
+        /** @var ChargeModelInterface $charge */
+        $charge = parent::save($stripeObject);
         if ($stripeObject['source']) {
-            $this->cardManager->save($stripeObject['source']);
+            /** @var CardModelInterface $card */
+            $card = $this->cardManager->save($stripeObject['source'], $flush);
+            $charge->setSource($card->getStripeId());
+        }
+        if ($flush) {
+            $this->objectManager->flush($charge);
         }
 
-        return $model;
+        return $charge;
     }
 }
