@@ -26,7 +26,7 @@ class WebhookController extends Controller
         }
 
         $eventType = new StripeEventType($stripeEvent);
-        $this->get('event_dispatcher')->dispatch($stripeEvent->type, $eventType);
+        $this->get('event_dispatcher')->dispatch('stripe.' . $stripeEvent->type, $eventType);
 
         return new Response();
     }

@@ -2,6 +2,8 @@
 
 namespace Aimir\StripeBundle\Stripe\Model;
 
+use Aimir\StripeBundle\Stripe\StripeCard;
+
 class Customer
 {
     /**
@@ -252,5 +254,29 @@ class Customer
         $this->trialEnd = $trialEnd;
 
         return $this;
+    }
+
+    /**
+     * Convert to array in stripe format
+     *
+     * @see https://stripe.com/docs/api#create_customer
+     * @return array
+     */
+    public function toArray()
+    {
+        $result = array(
+            'email' => $this->getEmail(),
+            'description' => $this->getDescription(),
+            'account_balance' => $this->getAccountBalance(),
+            'quantity' => $this->getQuantity() ?: 1,
+            'tax_percent' => $this->getTaxPercent(),
+            'trial_end' => $this->getTrialEnd(),
+            'plan' => $this->getPlan(),
+            'coupon' => $this->getCoupon(),
+            'source' => $this->getSource() ? $this->getSource()->toArray() : null,
+            'shipping' => $this->getShipping() ? $this->getShipping()->toArray() : null
+        );
+
+        return $result;
     }
 }

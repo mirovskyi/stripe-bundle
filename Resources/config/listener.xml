@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="aimir_stripe.listener.card" class="Aimir\StripeBundle\EventListener\CardEventListener">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="aimir_stripe.card_manager" />
+        </service>
+
+        <service id="aimir_stripe.listener.charge" class="Aimir\StripeBundle\EventListener\ChargeEventListener">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="aimir_stripe.charge_manager" />
+        </service>
+
+        <service id="aimir_stripe.listener.coupon" class="Aimir\StripeBundle\EventListener\CouponEventListener">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="aimir_stripe.coupon_manager" />
+            <argument type="service" id="aimir_stripe.customer_manager" />
+            <argument type="service" id="aimir_stripe.object_manager" />
+        </service>
+
+        <service id="aimir_stripe.listener.invoice" class="Aimir\StripeBundle\EventListener\InvoiceEventListener">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="aimir_stripe.invoice_manager" />
+        </service>
+
+        <service id="aimir_stripe.listener.plan" class="Aimir\StripeBundle\EventListener\PlanEventListener">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="aimir_stripe.plan_manager" />
+        </service>
+
+        <service id="aimir_stripe.listener.subscription" class="Aimir\StripeBundle\EventListener\SubscriptionEventListener">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="aimir_stripe.subscription_manager" />
+        </service>
+
+    </services>
+
+</container>

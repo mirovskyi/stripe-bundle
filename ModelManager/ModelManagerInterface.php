@@ -32,4 +32,14 @@ interface ModelManagerInterface
      * @return StripeModelInterface
      */
     public function save(StripeObject $stripeObject, $flush = false);
+
+    /**
+     * Remove stripe model by stripe ID
+     *
+     * @param string $stripeId
+     * @param bool $flush
+     *
+     * @return bool
+     */
+    public function remove($stripeId, $flush = false);
 }

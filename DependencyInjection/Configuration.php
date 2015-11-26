@@ -2,6 +2,7 @@
 
 namespace Aimir\StripeBundle\DependencyInjection;
 
+use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -20,10 +21,51 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('aimir_stripe');
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+        $supportedDrivers = array('orm', /** coming soon) */);
+
+        $rootNode
+            ->children()
+                ->scalarNode('db_driver')
+                    ->defaultValue('orm')
+                    ->validate()
+                        ->ifNotInArray($supportedDrivers)
+                        ->thenInvalid('The driver %s is not supported. Please choose one of '.json_encode($supportedDrivers))
+                    ->end()
+                    ->cannotBeOverwritten()
+                    ->isRequired()
+                    ->cannotBeEmpty()
+                ->end()
+                ->scalarNode('model_manager_name')->defaultNull()->end()
+                ->scalarNode('secret_key')
+                    ->isRequired()
+                    ->cannotBeEmpty()
+                ->end()
+            ->end();
+
+        $this->modelClassesSection($rootNode);
 
         return $treeBuilder;
+    }
+
+    /**
+     * @param ArrayNodeDefinition $node
+     */
+    private function modelClassesSection(ArrayNodeDefinition $node)
+    {
+        $node
+            ->children()
+                ->arrayNode('model')->isRequired()
+                    ->children()
+                        ->scalarNode('card')->isRequired()->cannotBeEmpty()->end()
+                        ->scalarNode('charge')->isRequired()->cannotBeEmpty()->end()
+                        ->scalarNode('coupon')->isRequired()->cannotBeEmpty()->end()
+                        ->scalarNode('customer')->isRequired()->cannotBeEmpty()->end()
+                        ->scalarNode('invoice')->isRequired()->cannotBeEmpty()->end()
+                        ->scalarNode('plan')->isRequired()->cannotBeEmpty()->end()
+                        ->scalarNode('refund')->isRequired()->cannotBeEmpty()->end()
+                        ->scalarNode('subscription')->isRequired()->cannotBeEmpty()->end()
+                    ->end()
+                ->end()
+            ->end();
     }
 }

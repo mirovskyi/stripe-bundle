@@ -46,6 +46,11 @@ class CustomerModel extends StripeModelAbstract implements CustomerModelInterfac
     protected $shipping;
 
     /**
+     * @var string
+     */
+    protected $coupon;
+
+    /**
      * @return int
      */
     public function getAccountBalance()
@@ -201,6 +206,26 @@ class CustomerModel extends StripeModelAbstract implements CustomerModelInterfac
     public function setShipping($shipping)
     {
         $this->shipping = $shipping;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCoupon()
+    {
+        return $this->coupon;
+    }
+
+    /**
+     * @param string $coupon
+     *
+     * @return $this
+     */
+    public function setCoupon($coupon)
+    {
+        $this->coupon = $coupon;
 
         return $this;
     }

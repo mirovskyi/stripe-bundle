@@ -2,7 +2,9 @@
 
 namespace Aimir\StripeBundle\Stripe;
 
+use Aimir\StripeBundle\Stripe\Model\Card;
 use Aimir\StripeBundle\Stripe\Model\Customer;
+use Aimir\StripeBundle\Stripe\Model\Subscription;
 use Stripe\Customer as StripeCustomerApi;
 use Stripe\StripeObject;
 
@@ -18,49 +20,11 @@ class StripeCustomer
      *
      * @param Customer $customer
      *
-     * @return StripeObject
+     * @return Stripe\Customer
      */
     public function create(Customer $customer)
     {
-        $params = [
-            'email' => $customer->getEmail(),
-            'description' => $customer->getDescription(),
-            'account_balance' => $customer->getAccountBalance(),
-            'quantity' => $customer->getQuantity() ?: 1,
-            'tax_percent' => $customer->getTaxPercent(),
-            'trial_end' => $customer->getTrialEnd(),
-            'plan' => $customer->getPlan(),
-            'coupon' => $customer->getCoupon()
-        ];
-        if ($card = $customer->getSource()) {
-            $params['source'] = [
-                'object' => StripeCard::STRIPE_OBJECT,
-                'number' => $card->getNumber(),
-                'exp_month' => $card->getExpMonth(),
-                'exp_year' => $card->getExpYear(),
-                'cvc' => $card->getCvc(),
-                'name' => $card->getCardholder()
-            ];
-        }
-        if ($shipping = $customer->getShipping()) {
-            $shippingParams = [
-                'name' => $shipping->getName(),
-                'phone' => $shipping->getPhone()
-            ];
-            if ($address = $shipping->getAddress()) {
-                $shippingParams['address'] = [
-                    'line1' => $address->getLine1(),
-                    'city' => $address->getCity(),
-                    'country' => $address->getCountry(),
-                    'line2' => $address->getLine2(),
-                    'postal_code' => $address->getPostalCode(),
-                    'state' => $address->getState()
-                ];
-            }
-            $params['shipping'] = $shippingParams;
-        }
-
-        return StripeCustomerApi::create($params);
+        return StripeCustomerApi::create($customer->toArray());
     }
 
     /**
@@ -86,14 +50,70 @@ class StripeCustomer
     }
 
     /**
-     * Get all customers
+     * Create new card source
      *
+     * @param string $customer Customer StripeID
+     * @param Card $card
      * @param array|null $params
      *
-     * @return \Stripe\Collection
+     * @return StripeObject
      */
-    public function all($params = null)
+    public function createCard($customer, Card $card, $params = null)
     {
-        return StripeCustomerApi::all($params);
+        //Create credit card source
+        $source = $card->toArray();
+        //Request params
+        $params = array_merge(array('source' => $source), $params);
+
+        //Retrieve API for given customer
+        $customerApi = $this->retrieve($customer);
+
+        return $customerApi->sources->create($params);
+    }
+
+    /**
+     * Retrieve stripe card object
+     *
+     * @param string $customer Customer StripeID
+     * @param string $id Card StripeID
+     *
+     * @return Stripe\Card
+     */
+    public function retrieveCard($customer, $id)
+    {
+        $customerApi = $this->retrieve($customer);
+
+        return $customerApi->sources->retrieve($id);
+    }
+
+    /**
+     * Create new stripe subscription
+     *
+     * @param string $customer Customer StripeID
+     * @param Subscription $subscription
+     *
+     * @return Stripe\Subscription
+     */
+    public function createSubscription($customer, Subscription $subscription)
+    {
+        //Retrieve API for given customer
+        $customerApi = $this->retrieve($customer);
+
+        return $customerApi->subscriptions->create($subscription->toArray());
+    }
+
+    /**
+     * Retrieve stripe subscription object
+     *
+     * @param string $customer Customer StripeID
+     * @param string $id Subscription StripeID
+     *
+     * @return Stripe\Subscription
+     */
+    public function retrieveSubscription($customer, $id)
+    {
+        $customerApi = $this->retrieve($customer);
+
+        return $customerApi->subscriptions->retrieve($id);
     }
 }

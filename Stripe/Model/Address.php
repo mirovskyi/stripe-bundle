@@ -153,4 +153,22 @@ class Address
 
         return $this;
     }
+
+    /**
+     * Convert to array in stripe format
+     *
+     * @see https://stripe.com/docs/api#customer_object
+     * @return array
+     */
+    public function toArray()
+    {
+        return array(
+            'line1' => $this->getLine1(),
+            'city' => $this->getCity(),
+            'country' => $this->getCountry(),
+            'line2' => $this->getLine2(),
+            'postal_code' => $this->getPostalCode(),
+            'state' => $this->getState()
+        );
+    }
 }

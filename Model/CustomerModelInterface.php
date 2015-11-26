@@ -43,4 +43,16 @@ interface CustomerModelInterface extends StripeModelInterface
      * @return array
      */
     public function getShipping();
+
+    /**
+     * @return string
+     */
+    public function getCoupon();
+
+    /**
+     * @param string $coupon
+     *
+     * @return $this
+     */
+    public function setCoupon($coupon);
 }

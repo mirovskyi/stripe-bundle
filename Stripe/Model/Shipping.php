@@ -78,4 +78,19 @@ class Shipping
 
         return $this;
     }
+
+    /**
+     * Convert to array in stripe format
+     *
+     * @see https://stripe.com/docs/api#customer_object
+     * @return array
+     */
+    public function toArray()
+    {
+        return array(
+            'name' => $this->getName(),
+            'phone' => $this->getPhone(),
+            'address' => $this->getAddress() ? $this->getAddress()->toArray() : null
+        );
+    }
 }

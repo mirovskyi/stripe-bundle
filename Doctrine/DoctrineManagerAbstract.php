@@ -30,10 +30,7 @@ abstract class DoctrineManagerAbstract implements ModelManagerInterface
     }
 
     /**
-     * Create model object
-     *
-     * @return StripeModelInterface
-     * @throws \Exception
+     * {@inheritdoc}
      */
     public function create()
     {
@@ -47,9 +44,7 @@ abstract class DoctrineManagerAbstract implements ModelManagerInterface
     }
 
     /**
-     * @param string $stripeId
-     *
-     * @return StripeModelInterface
+     * {@inheritdoc}
      */
     public function retrieve($stripeId)
     {
@@ -59,13 +54,7 @@ abstract class DoctrineManagerAbstract implements ModelManagerInterface
     }
 
     /**
-     * Create|Update stripe model from stripe object
-     *
-     * @param StripeObject $stripeObject
-     * @param bool $flush Flush data to storage
-     *
-     * @return StripeModelInterface
-     * @throws \Exception
+     * {@inheritdoc}
      */
     public function save(StripeObject $stripeObject, $flush = false)
     {
@@ -83,5 +72,22 @@ abstract class DoctrineManagerAbstract implements ModelManagerInterface
         }
 
         return $model;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function remove($stripeId, $flush = false)
+    {
+        if ($model = $this->retrieve($stripeId)) {
+            $this->objectManager->remove($model);
+            if ($flush) {
+                $this->objectManager->flush($model);
+            }
+
+            return true;
+        }
+
+        return false;
     }
 }
