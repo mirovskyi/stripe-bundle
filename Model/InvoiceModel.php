@@ -4,7 +4,7 @@ namespace Aimir\StripeBundle\Model;
 
 use Stripe\StripeObject;
 
-class InvoiceModel extends StripeModelAbstract implements InvoiceModelInterface
+abstract class InvoiceModel extends StripeModelAbstract implements InvoiceModelInterface
 {
     /**
      * @var int

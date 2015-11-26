@@ -107,11 +107,6 @@ abstract class CardModel extends StripeModelAbstract implements CardModelInterfa
     protected $fingerprint;
 
     /**
-     * @return mixed
-     */
-    abstract public function getId();
-
-    /**
      * @return string
      */
     public function getBrand()

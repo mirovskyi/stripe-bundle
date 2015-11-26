@@ -4,7 +4,7 @@ namespace Aimir\StripeBundle\Model;
 
 use Stripe\StripeObject;
 
-class SubscriptionModel extends StripeModelAbstract implements SubscriptionModelInterface
+abstract class SubscriptionModel extends StripeModelAbstract implements SubscriptionModelInterface
 {
     /**
      * @var float

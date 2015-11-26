@@ -27,6 +27,11 @@ abstract class CouponModel extends StripeModelAbstract implements CouponModelInt
     protected $created;
 
     /**
+     * @var string
+     */
+    protected $currency;
+
+    /**
      * @var int
      */
     protected $durationInMonths;
@@ -127,6 +132,26 @@ abstract class CouponModel extends StripeModelAbstract implements CouponModelInt
     public function setCreated($created)
     {
         $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCurrency()
+    {
+        return $this->currency;
+    }
+
+    /**
+     * @param string $currency
+     *
+     * @return $this
+     */
+    public function setCurrency($currency)
+    {
+        $this->currency = $currency;
 
         return $this;
     }

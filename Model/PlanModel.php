@@ -4,7 +4,7 @@ namespace Aimir\StripeBundle\Model;
 
 use Stripe\StripeObject;
 
-class PlanModel extends StripeModelAbstract implements PlanModelInterface
+abstract class PlanModel extends StripeModelAbstract implements PlanModelInterface
 {
     /**
      * @var int

@@ -4,7 +4,7 @@ namespace Aimir\StripeBundle\Model;
 
 use Stripe\StripeObject;
 
-class RefundModel extends StripeModelAbstract implements RefundModelInterface
+abstract class RefundModel extends StripeModelAbstract implements RefundModelInterface
 {
     /**
      * @var int
