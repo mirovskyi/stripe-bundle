@@ -5,7 +5,7 @@ namespace Aimir\StripeBundle\Doctrine;
 use Doctrine\Common\Persistence\ObjectManager;
 use Aimir\StripeBundle\Model\StripeModelInterface;
 use Aimir\StripeBundle\ModelManager\ModelManagerInterface;
-use Stripe\StripeObject;
+use Stripe\Object as StripeObject;
 
 abstract class DoctrineManagerAbstract implements ModelManagerInterface
 {

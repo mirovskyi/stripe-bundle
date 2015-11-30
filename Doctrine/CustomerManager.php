@@ -4,7 +4,7 @@ namespace Aimir\StripeBundle\Doctrine;
 
 use Aimir\StripeBundle\ModelManager\ModelManagerInterface;
 use Doctrine\Common\Collections\ArrayCollection;
-use Stripe\StripeObject;
+use Stripe\Object as StripeObject;
 
 class CustomerManager extends DoctrineManagerAbstract
 {

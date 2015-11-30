@@ -35,6 +35,7 @@ class AimirStripeExtension extends Extension
                 $doctrineService = null;
             }
             $container->setAlias('aimir_stripe.object_manager', $doctrineService);
+            $container->setParameter('aimir_stripe.model_manager_name', $doctrineService);
         }
 
         foreach ($config['model'] as $name => $class) {

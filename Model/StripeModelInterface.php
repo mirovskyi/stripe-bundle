@@ -2,7 +2,7 @@
 
 namespace Aimir\StripeBundle\Model;
 
-use Stripe\StripeObject;
+use Stripe\Object as StripeObject;
 
 interface StripeModelInterface
 {

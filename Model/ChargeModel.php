@@ -3,7 +3,7 @@
 namespace Aimir\StripeBundle\Model;
 
 use Doctrine\Common\Collections\Collection;
-use Stripe\StripeObject;
+use Stripe\Object as StripeObject;
 
 abstract class ChargeModel extends StripeModelAbstract implements ChargeModelInterface
 {

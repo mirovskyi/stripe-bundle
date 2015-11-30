@@ -2,7 +2,7 @@
 
 namespace Aimir\StripeBundle\Model;
 
-use Stripe\StripeObject;
+use Stripe\Object as StripeObject;
 
 abstract class CouponModel extends StripeModelAbstract implements CouponModelInterface
 {

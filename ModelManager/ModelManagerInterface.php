@@ -3,7 +3,7 @@
 namespace Aimir\StripeBundle\ModelManager;
 
 use Aimir\StripeBundle\Model\StripeModelInterface;
-use Stripe\StripeObject;
+use Stripe\Object as StripeObject;
 
 interface ModelManagerInterface
 {

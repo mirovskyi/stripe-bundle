@@ -5,7 +5,7 @@ namespace Aimir\StripeBundle\Doctrine;
 use Aimir\StripeBundle\Model\CardModelInterface;
 use Aimir\StripeBundle\Model\ChargeModelInterface;
 use Aimir\StripeBundle\ModelManager\ModelManagerInterface;
-use Stripe\StripeObject;
+use Stripe\Object as StripeObject;
 
 class ChargeManager extends DoctrineManagerAbstract
 {

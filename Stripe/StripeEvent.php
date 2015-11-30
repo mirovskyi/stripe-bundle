@@ -3,7 +3,6 @@
 namespace Aimir\StripeBundle\Stripe;
 
 use Stripe\Event as StripeEventApi;
-use Stripe\StripeObject;
 
 class StripeEvent
 {
@@ -27,7 +26,7 @@ class StripeEvent
      *
      * @param string $id
      *
-     * @return StripeObject
+     * @return Stripe\Event
      */
     public function retrieve($id)
     {

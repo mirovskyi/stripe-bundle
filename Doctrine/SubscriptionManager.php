@@ -6,7 +6,7 @@ use Aimir\StripeBundle\Model\CouponModelInterface;
 use Aimir\StripeBundle\Model\PlanModelInterface;
 use Aimir\StripeBundle\Model\SubscriptionModelInterface;
 use Aimir\StripeBundle\ModelManager\ModelManagerInterface;
-use Stripe\StripeObject;
+use Stripe\Object as StripeObject;
 
 class SubscriptionManager extends DoctrineManagerAbstract
 {

@@ -6,7 +6,6 @@ use Aimir\StripeBundle\Stripe\Model\Card;
 use Aimir\StripeBundle\Stripe\Model\Customer;
 use Aimir\StripeBundle\Stripe\Model\Subscription;
 use Stripe\Customer as StripeCustomerApi;
-use Stripe\StripeObject;
 
 class StripeCustomer
 {
@@ -42,7 +41,7 @@ class StripeCustomer
      *
      * @param string $id
      *
-     * @return StripeObject
+     * @return Stripe\Customer
      */
     public function retrieve($id)
     {
@@ -56,7 +55,7 @@ class StripeCustomer
      * @param Card $card
      * @param array|null $params
      *
-     * @return StripeObject
+     * @return Stripe\Card
      */
     public function createCard($customer, Card $card, $params = null)
     {

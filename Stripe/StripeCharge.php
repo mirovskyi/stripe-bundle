@@ -3,7 +3,6 @@
 namespace Aimir\StripeBundle\Stripe;
 
 use Stripe\Charge as StripeChargeApi;
-use Stripe\StripeObject;
 
 class StripeCharge
 {
@@ -29,7 +28,7 @@ class StripeCharge
      * @param string $currency
      * @param array $params
      *
-     * @return StripeObject
+     * @return Stripe\Charge
      */
     public function create($amount, $currency, $params = null)
     {

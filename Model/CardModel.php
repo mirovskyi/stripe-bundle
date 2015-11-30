@@ -2,7 +2,7 @@
 
 namespace Aimir\StripeBundle\Model;
 
-use Stripe\StripeObject;
+use Stripe\Object as StripeObject;
 
 abstract class CardModel extends StripeModelAbstract implements CardModelInterface
 {

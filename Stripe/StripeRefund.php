@@ -3,7 +3,6 @@
 namespace Aimir\StripeBundle\Stripe;
 
 use Stripe\Refund as StripeRefundApi;
-use Stripe\StripeObject;
 
 class StripeRefund
 {

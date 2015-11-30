@@ -5,7 +5,7 @@ namespace Aimir\StripeBundle\Doctrine;
 use Aimir\StripeBundle\Model\CouponModelInterface;
 use Aimir\StripeBundle\Model\InvoiceModelInterface;
 use Aimir\StripeBundle\ModelManager\ModelManagerInterface;
-use Stripe\StripeObject;
+use Stripe\Object as StripeObject;
 
 class InvoiceManager extends DoctrineManagerAbstract
 {

@@ -4,7 +4,6 @@ namespace Aimir\StripeBundle\Stripe;
 
 use Aimir\StripeBundle\StripeException;
 use Stripe\Coupon as StripeCouponApi;
-use Stripe\StripeObject;
 
 class StripeCoupon
 {
@@ -36,7 +35,7 @@ class StripeCoupon
      * @param string $duration
      * @param array|null $params
      *
-     * @return StripeObject
+     * @return Stripe\Coupon
      * @throws StripeException
      */
     public function create($duration, $params = null)

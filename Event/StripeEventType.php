@@ -2,7 +2,7 @@
 
 namespace Aimir\StripeBundle\Event;
 
-use Stripe\StripeObject;
+use Stripe\Object as StripeObject;
 
 class StripeEventType
 {
