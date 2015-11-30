@@ -6,7 +6,7 @@
     <mapped-superclass name="Aimir\StripeBundle\Model\ChargeModel">
         <field name="stripeId" column="stripe_id" type="string" />
         <field name="amount" column="amount" type="integer" />
-        <field name="captured"  column="captured" type="bool" nullable="true" />
+        <field name="captured"  column="captured" type="boolean" nullable="true" />
         <field name="created" column="created" type="datetime" />
         <field name="currency" column="currency" type="string" />
         <field name="paid" column="paid" type="boolean" />

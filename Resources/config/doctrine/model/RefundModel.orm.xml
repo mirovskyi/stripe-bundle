@@ -12,7 +12,7 @@
         <field name="balanceTransaction" column="balance_transaction" type="string" nullable="true" />
         <field name="description" column="description" type="string" nullable="true" />
         <field name="reason" column="reason" type="string" nullable="true" />
-        <field name="recipientNumber" column="recipient_number" type="string" nullable="true" />
+        <field name="receiptNumber" column="receipt_number" type="string" nullable="true" />
         <field name="metadata" column="metadata" type="array" nullable="true" />
         <field name="livemode" column="livemode" type="boolean" />
     </mapped-superclass>
