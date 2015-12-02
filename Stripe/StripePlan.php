@@ -2,7 +2,7 @@
 
 namespace Aimir\StripeBundle\Stripe;
 
-use Aimir\StripeBundle\Stripe\Model\Plan;
+use Aimir\StripeBundle\Stripe\Model\StripePlanModel;
 use Stripe\Plan as StripePlanApi;
 
 class StripePlan
@@ -25,11 +25,11 @@ class StripePlan
     /**
      * Create stripe plan
      *
-     * @param Plan $plan
+     * @param StripePlanModel $plan
      *
      * @return \Stripe\Plan
      */
-    public function create(Plan $plan)
+    public function create(StripePlanModel $plan)
     {
         return StripePlanApi::create($plan->toArray());
     }

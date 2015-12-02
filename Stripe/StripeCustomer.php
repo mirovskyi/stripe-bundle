@@ -2,9 +2,9 @@
 
 namespace Aimir\StripeBundle\Stripe;
 
-use Aimir\StripeBundle\Stripe\Model\Card;
-use Aimir\StripeBundle\Stripe\Model\Customer;
-use Aimir\StripeBundle\Stripe\Model\Subscription;
+use Aimir\StripeBundle\Stripe\Model\StripeCardModel;
+use Aimir\StripeBundle\Stripe\Model\StripeCustomerModel;
+use Aimir\StripeBundle\Stripe\Model\StripeSubscriptionModel;
 use Stripe\Customer as StripeCustomerApi;
 
 class StripeCustomer
@@ -17,11 +17,11 @@ class StripeCustomer
     /**
      * Create stripe customer
      *
-     * @param Customer $customer
+     * @param StripeCustomerModel $customer
      *
      * @return \Stripe\Customer
      */
-    public function create(Customer $customer)
+    public function create(StripeCustomerModel $customer)
     {
         return StripeCustomerApi::create($customer->toArray());
     }
@@ -52,12 +52,12 @@ class StripeCustomer
      * Create new card source
      *
      * @param string $customer Customer StripeID
-     * @param Card $card
+     * @param StripeCardModel $card
      * @param array|null $params
      *
      * @return \Stripe\Card
      */
-    public function createCard($customer, Card $card, $params = null)
+    public function createCard($customer, StripeCardModel $card, $params = null)
     {
         //Create credit card source
         $source = $card->toArray();
@@ -89,11 +89,11 @@ class StripeCustomer
      * Create new stripe subscription
      *
      * @param string $customer Customer StripeID
-     * @param Subscription $subscription
+     * @param StripeSubscriptionModel $subscription
      *
      * @return \Stripe\Subscription
      */
-    public function createSubscription($customer, Subscription $subscription)
+    public function createSubscription($customer, StripeSubscriptionModel $subscription)
     {
         //Retrieve API for given customer
         $customerApi = $this->retrieve($customer);
