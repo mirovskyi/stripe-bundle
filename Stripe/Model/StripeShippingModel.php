@@ -2,10 +2,10 @@
 
 namespace Aimir\StripeBundle\Stripe\Model;
 
-class Shipping
+class StripeShippingModel
 {
     /**
-     * @var Address
+     * @var StripeAddressModel
      */
     protected $address;
 
@@ -20,7 +20,7 @@ class Shipping
     protected $phone;
 
     /**
-     * @return Address
+     * @return StripeAddressModel
      */
     public function getAddress()
     {
@@ -28,11 +28,11 @@ class Shipping
     }
 
     /**
-     * @param Address $address
+     * @param StripeAddressModel $address
      *
      * @return $this
      */
-    public function setAddress(Address $address)
+    public function setAddress(StripeAddressModel $address)
     {
         $this->address = $address;
 

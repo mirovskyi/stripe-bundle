@@ -28,7 +28,7 @@ class StripeCharge
      * @param string $currency
      * @param array $params
      *
-     * @return Stripe\Charge
+     * @return \Stripe\Charge
      */
     public function create($amount, $currency, $params = null)
     {
@@ -42,7 +42,7 @@ class StripeCharge
      *
      * @param string $id Charge StripeID
      *
-     * @return Stripe\Charge
+     * @return \Stripe\Charge
      */
     public function retrieve($id)
     {

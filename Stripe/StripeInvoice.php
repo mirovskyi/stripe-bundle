@@ -27,7 +27,7 @@ class StripeInvoice
      * @param $customer
      * @param null $params
      *
-     * @return Stripe\Invoice
+     * @return \Stripe\Invoice
      */
     public function create($customer, $params = null)
     {
@@ -41,7 +41,7 @@ class StripeInvoice
      *
      * @param string $id Invoice StripeID
      *
-     * @return Stripe\Invoice
+     * @return \Stripe\Invoice
      */
     public function retrieve($id)
     {

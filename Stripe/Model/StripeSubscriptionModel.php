@@ -2,7 +2,7 @@
 
 namespace Aimir\StripeBundle\Stripe\Model;
 
-class Subscription
+class StripeSubscriptionModel
 {
     /**
      * @var float
@@ -20,7 +20,7 @@ class Subscription
     protected $plan;
 
     /**
-     * @var Card
+     * @var StripeCardModel
      */
     protected $source;
 
@@ -105,7 +105,7 @@ class Subscription
     }
 
     /**
-     * @return Card
+     * @return StripeCardModel
      */
     public function getSource()
     {
@@ -113,7 +113,7 @@ class Subscription
     }
 
     /**
-     * @param Card $source
+     * @param StripeCardModel $source
      *
      * @return $this
      */

@@ -27,7 +27,7 @@ class StripeRefund
      * @param string $charge
      * @param array|null $params
      *
-     * @return Stripe\Refund
+     * @return \Stripe\Refund
      */
     public function create($charge, $params = null)
     {
@@ -41,7 +41,7 @@ class StripeRefund
      *
      * @param string $id
      *
-     * @return Stripe\Refund
+     * @return \Stripe\Refund
      */
     public function retrieve($id)
     {

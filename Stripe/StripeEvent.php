@@ -26,7 +26,7 @@ class StripeEvent
      *
      * @param string $id
      *
-     * @return Stripe\Event
+     * @return \Stripe\Event
      */
     public function retrieve($id)
     {

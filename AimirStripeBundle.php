@@ -16,7 +16,7 @@ class AimirStripeBundle extends Bundle
     protected function addRegisterMappingPass(ContainerBuilder $container)
     {
         $mappings = array(
-            realpath(__DIR__ . 'Resources/config/doctrine/model') => 'Aimir\StripeBundle\Model'
+            realpath(__DIR__ . '/Resources/config/doctrine/model') => 'Aimir\StripeBundle\Model'
         );
 
         $container->addCompilerPass(DoctrineOrmMappingsPass::createXmlMappingDriver($mappings));

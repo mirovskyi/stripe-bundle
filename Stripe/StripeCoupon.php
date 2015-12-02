@@ -35,7 +35,7 @@ class StripeCoupon
      * @param string $duration
      * @param array|null $params
      *
-     * @return Stripe\Coupon
+     * @return \Stripe\Coupon
      * @throws StripeException
      */
     public function create($duration, $params = null)
@@ -59,7 +59,7 @@ class StripeCoupon
      *
      * @param string $id Coupon StripeID
      *
-     * @return Stripe\Coupon
+     * @return \Stripe\Coupon
      */
     public function retrieve($id)
     {

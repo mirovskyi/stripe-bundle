@@ -2,7 +2,7 @@
 
 namespace Aimir\StripeBundle\Stripe\Model;
 
-class Plan
+class StripePlanModel
 {
     const INTERVAL_DAY = 'day';
     const INTERVAL_WEEK = 'week';

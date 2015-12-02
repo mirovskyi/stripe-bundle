@@ -19,7 +19,7 @@ class StripeCustomer
      *
      * @param Customer $customer
      *
-     * @return Stripe\Customer
+     * @return \Stripe\Customer
      */
     public function create(Customer $customer)
     {
@@ -41,7 +41,7 @@ class StripeCustomer
      *
      * @param string $id
      *
-     * @return Stripe\Customer
+     * @return \Stripe\Customer
      */
     public function retrieve($id)
     {
@@ -55,7 +55,7 @@ class StripeCustomer
      * @param Card $card
      * @param array|null $params
      *
-     * @return Stripe\Card
+     * @return \Stripe\Card
      */
     public function createCard($customer, Card $card, $params = null)
     {
@@ -76,7 +76,7 @@ class StripeCustomer
      * @param string $customer Customer StripeID
      * @param string $id Card StripeID
      *
-     * @return Stripe\Card
+     * @return \Stripe\Card
      */
     public function retrieveCard($customer, $id)
     {
@@ -91,7 +91,7 @@ class StripeCustomer
      * @param string $customer Customer StripeID
      * @param Subscription $subscription
      *
-     * @return Stripe\Subscription
+     * @return \Stripe\Subscription
      */
     public function createSubscription($customer, Subscription $subscription)
     {
@@ -107,7 +107,7 @@ class StripeCustomer
      * @param string $customer Customer StripeID
      * @param string $id Subscription StripeID
      *
-     * @return Stripe\Subscription
+     * @return \Stripe\Subscription
      */
     public function retrieveSubscription($customer, $id)
     {

@@ -27,7 +27,7 @@ class StripePlan
      *
      * @param Plan $plan
      *
-     * @return Stripe\Plan
+     * @return \Stripe\Plan
      */
     public function create(Plan $plan)
     {
@@ -39,7 +39,7 @@ class StripePlan
      *
      * @param string $id Plan StripeID
      *
-     * @return Stripe\Plan
+     * @return \Stripe\Plan
      */
     public function retrieve($id)
     {

@@ -2,9 +2,7 @@
 
 namespace Aimir\StripeBundle\Stripe\Model;
 
-use Aimir\StripeBundle\Stripe\StripeCard;
-
-class Customer
+class StripeCustomerModel
 {
     /**
      * @var int
@@ -37,12 +35,12 @@ class Customer
     protected $coupon;
 
     /**
-     * @var Card
+     * @var StripeCardModel
      */
     protected $source;
 
     /**
-     * @var Shipping
+     * @var StripeShippingModel
      */
     protected $shipping;
 
@@ -177,7 +175,7 @@ class Customer
     }
 
     /**
-     * @return Card
+     * @return StripeCardModel
      */
     public function getSource()
     {
@@ -185,11 +183,11 @@ class Customer
     }
 
     /**
-     * @param Card $source
+     * @param StripeCardModel $source
      *
      * @return $this
      */
-    public function setSource(Card $source)
+    public function setSource(StripeCardModel $source)
     {
         $this->source = $source;
 
@@ -197,7 +195,7 @@ class Customer
     }
 
     /**
-     * @return Shipping
+     * @return StripeShippingModel
      */
     public function getShipping()
     {
@@ -205,11 +203,11 @@ class Customer
     }
 
     /**
-     * @param Shipping $shipping
+     * @param StripeShippingModel $shipping
      *
      * @return $this
      */
-    public function setShipping(Shipping $shipping)
+    public function setShipping(StripeShippingModel $shipping)
     {
         $this->shipping = $shipping;
 

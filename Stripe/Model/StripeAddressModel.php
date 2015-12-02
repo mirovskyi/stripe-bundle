@@ -2,7 +2,7 @@
 
 namespace Aimir\StripeBundle\Stripe\Model;
 
-class Address
+class StripeAddressModel
 {
     /**
      * @var string

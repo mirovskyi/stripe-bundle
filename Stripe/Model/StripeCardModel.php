@@ -4,7 +4,7 @@ namespace Aimir\StripeBundle\Stripe\Model;
 
 use Aimir\StripeBundle\Stripe\StripeCard;
 
-class Card
+class StripeCardModel
 {
     /**
      * @var string
