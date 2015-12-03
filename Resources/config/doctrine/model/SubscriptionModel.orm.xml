@@ -25,7 +25,6 @@
         <field name="active" column="active" type="boolean" nullable="true" />
         <field name="pastDue" column="past_due" type="boolean" nullable="true" />
         <field name="metadata" column="metadata" type="array" nullable="true" />
-        <field name="livemode" column="livemode" type="boolean" />
     </mapped-superclass>
 
 </doctrine-mapping>

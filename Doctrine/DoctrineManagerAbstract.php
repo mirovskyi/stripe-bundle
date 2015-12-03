@@ -3,7 +3,6 @@
 namespace Aimir\StripeBundle\Doctrine;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use Aimir\StripeBundle\Model\StripeModelInterface;
 use Aimir\StripeBundle\ModelManager\ModelManagerInterface;
 use Stripe\Object as StripeObject;
 
@@ -35,7 +34,7 @@ abstract class DoctrineManagerAbstract implements ModelManagerInterface
     public function create()
     {
         $reflection = new \ReflectionClass($this->class);
-        if (!$reflection->implementsInterface('StripeModelInterface')) {
+        if (!$reflection->implementsInterface('Aimir\\StripeBundle\\Model\\StripeModelInterface')) {
             throw new \Exception(sprintf('Class %s must implement StripeModelInterface', $this->class));
         }
         $class = $this->class;
