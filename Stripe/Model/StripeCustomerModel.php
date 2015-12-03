@@ -266,7 +266,7 @@ class StripeCustomerModel
             'email' => $this->getEmail(),
             'description' => $this->getDescription(),
             'account_balance' => $this->getAccountBalance(),
-            'quantity' => $this->getQuantity() ?: 1,
+            'quantity' => $this->getQuantity(),
             'tax_percent' => $this->getTaxPercent(),
             'trial_end' => $this->getTrialEnd(),
             'plan' => $this->getPlan(),

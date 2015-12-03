@@ -11,7 +11,7 @@
         <field name="closed" column="closed" type="boolean" nullable="true" />
         <field name="currency" column="currency" type="string" />
         <field name="customer" column="customer" type="string" nullable="true" />
-        <field name="date" column="date" type="datetime" nullable="true" />
+        <field name="date" column="invoice_date" type="datetime" nullable="true" />
         <field name="forgiven" column="forgiven" type="boolean" nullable="true" />
         <field name="paid" column="paid" type="boolean" nullable="true" />
         <field name="periodStart" column="period_start" type="datetime" nullable="true" />

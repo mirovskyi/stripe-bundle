@@ -6,7 +6,7 @@
     <mapped-superclass name="Aimir\StripeBundle\Model\CustomerModel">
         <field name="stripeId" column="stripe_id" type="string" />
         <field name="accountBalance" column="account_balance" type="integer" nullable="true"/>
-        <field name="currency"  column="currency" type="string" />
+        <field name="currency"  column="currency" type="string" nullable="true" />
         <field name="defaultSource" column="default_source" type="string" nullable="true" />
         <field name="description" column="description" type="string" nullable="true" />
         <field name="email" column="email" type="string" />

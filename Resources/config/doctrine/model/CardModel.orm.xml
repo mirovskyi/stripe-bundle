@@ -22,7 +22,7 @@
         <field name="customer" column="customer" type="string" />
         <field name="cvcCheck" column="cvc_check" type="string" nullable="true" />
         <field name="dynamicLast4" column="dynamic_last_4" type="string" nullable="true" />
-        <field name="name" column="name" type="string" nullable="true" />
+        <field name="name" column="crad_name" type="string" nullable="true" />
         <field name="recipient" column="recipient" type="string" nullable="true" />
         <field name="fingerprint" column="fingerprint" type="string" nullable="true" />
         <field name="metadata" column="metadata" type="array" nullable="true" />

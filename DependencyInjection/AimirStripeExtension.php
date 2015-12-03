@@ -25,6 +25,8 @@ class AimirStripeExtension extends Extension
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
 
+        $container->setParameter('aimir_stripe.secret_key', $config['secret_key']);
+
         if ($customManagerName = $config['model_manager_name']) {
             $container->setAlias('aimir_stripe.object_manager', $customManagerName);
         } else {

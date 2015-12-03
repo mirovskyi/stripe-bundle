@@ -8,7 +8,7 @@
         <field name="amount" column="amount" type="integer" />
         <field name="created" column="created" type="datetime" />
         <field name="currency" column="currency" type="string" />
-        <field name="interval" column="interval" type="string" />
+        <field name="interval" column="interval_name" type="string" />
         <field name="intervalCount" column="interval_count" type="integer" />
         <field name="name" column="name" type="string" />
         <field name="statementDescriptor" column="statement_descriptor" type="string" nullable="true" />

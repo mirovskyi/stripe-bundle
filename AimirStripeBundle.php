@@ -8,11 +8,27 @@ use Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DoctrineOrmMappi
 
 class AimirStripeBundle extends Bundle
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function boot()
+    {
+        \Stripe\Stripe::setApiKey($this->container->getParameter('aimir_stripe.secret_key'));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function build(ContainerBuilder $container)
     {
         $this->addRegisterMappingPass($container);
     }
 
+    /**
+     * Register ORM model mapping
+     *
+     * @param ContainerBuilder $container
+     */
     protected function addRegisterMappingPass(ContainerBuilder $container)
     {
         $mappings = array(

@@ -40,11 +40,15 @@ class CustomerManager extends DoctrineManagerAbstract
     public function save(StripeObject $stripeObject, $flush = false)
     {
         $model = parent::save($stripeObject, $flush);
-        if ($stripeObject['source']) {
-            $this->cardManager->save($stripeObject['source'], $flush);
+        if ($stripeObject['sources']['total_count'] > 0) {
+            foreach ($stripeObject['sources']['data'] as $sourceObject) {
+                $this->cardManager->save($sourceObject, $flush);
+            }
         }
-        if ($stripeObject['subscription']) {
-            $this->subscriptionManager->save($stripeObject['subscription'], $flush);
+        if ($stripeObject['subscriptions']['total_count'] > 0) {
+            foreach ($stripeObject['subscriptions']['data'] as $subscriptionObject) {
+                $this->subscriptionManager->save($subscriptionObject, $flush);
+            }
         }
 
         return $model;

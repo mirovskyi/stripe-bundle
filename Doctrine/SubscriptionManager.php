@@ -33,6 +33,9 @@ class SubscriptionManager extends DoctrineManagerAbstract
         $this->couponManager = $couponManager;
     }
 
+    /**
+     * @inheritdoc
+     */
     public function save(StripeObject $stripeObject, $flush = false)
     {
         /** @var SubscriptionModelInterface $subscription */
@@ -50,5 +53,7 @@ class SubscriptionManager extends DoctrineManagerAbstract
         if ($flush) {
             $this->objectManager->flush($subscription);
         }
+
+        return $subscription;
     }
 }
