@@ -47,6 +47,11 @@ abstract class PlanModel extends StripeModelAbstract implements PlanModelInterfa
     protected $trialPeriodDays;
 
     /**
+     * @var bool
+     */
+    protected $livemode;
+
+    /**
      * @return int
      */
     public function getAmount()
@@ -202,6 +207,26 @@ abstract class PlanModel extends StripeModelAbstract implements PlanModelInterfa
     public function setTrialPeriodDays($trialPeriodDays)
     {
         $this->trialPeriodDays = $trialPeriodDays;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isLivemode()
+    {
+        return $this->livemode;
+    }
+
+    /**
+     * @param $livemode
+     *
+     * @return $this
+     */
+    public function setLivemode($livemode)
+    {
+        $this->livemode = $livemode;
 
         return $this;
     }

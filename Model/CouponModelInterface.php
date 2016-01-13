@@ -60,4 +60,11 @@ interface CouponModelInterface extends StripeModelInterface
      * @return bool
      */
     public function isValid();
+
+    /**
+     * Live mode
+     *
+     * @return boolean
+     */
+    public function isLivemode();
 }

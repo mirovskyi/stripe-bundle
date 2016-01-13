@@ -537,7 +537,6 @@ abstract class CardModel extends StripeModelAbstract implements CardModelInterfa
             ->setDynamicLast4($object['dynamic_last4'])
             ->setRecipient($object['recipient'])
             ->setFingerprint($object['fingerprint'])
-            ->setLivemode($object['livemode'])
             ->setCountry($object['country'])
             ->setFunding($object['funding'])
             ->setExpMonth($object['exp_month'])

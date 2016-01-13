@@ -43,4 +43,11 @@ interface PlanModelInterface extends StripeModelInterface
      * @return int
      */
     public function getTrialPeriodDays();
+
+    /**
+     * Live mode
+     *
+     * @return boolean
+     */
+    public function isLivemode();
 }

@@ -21,13 +21,6 @@ interface StripeModelInterface
     public function getMetadata();
 
     /**
-     * Live mode
-     *
-     * @return boolean
-     */
-    public function isLivemode();
-
-    /**
      * Initialize model object from stripe data
      *
      * @param StripeObject $object

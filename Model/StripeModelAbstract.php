@@ -17,11 +17,6 @@ abstract class StripeModelAbstract implements StripeModelInterface
     protected $metadata;
 
     /**
-     * @var bool
-     */
-    protected $livemode;
-
-    /**
      * Initialize model object from stripe data
      *
      * @param StripeObject $object
@@ -75,26 +70,6 @@ abstract class StripeModelAbstract implements StripeModelInterface
     public function setMetadata($metadata)
     {
         $this->metadata = $metadata;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isLivemode()
-    {
-        return $this->livemode;
-    }
-
-    /**
-     * @param $livemode
-     *
-     * @return $this
-     */
-    public function setLivemode($livemode)
-    {
-        $this->livemode = $livemode;
 
         return $this;
     }

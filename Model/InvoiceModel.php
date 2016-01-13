@@ -142,6 +142,11 @@ abstract class InvoiceModel extends StripeModelAbstract implements InvoiceModelI
     protected $coupon;
 
     /**
+     * @var bool
+     */
+    protected $livemode;
+
+    /**
      * @return int
      */
     public function getAmountDue()
@@ -677,6 +682,26 @@ abstract class InvoiceModel extends StripeModelAbstract implements InvoiceModelI
     public function setCoupon($coupon)
     {
         $this->coupon = $coupon;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isLivemode()
+    {
+        return $this->livemode;
+    }
+
+    /**
+     * @param $livemode
+     *
+     * @return $this
+     */
+    public function setLivemode($livemode)
+    {
+        $this->livemode = $livemode;
 
         return $this;
     }

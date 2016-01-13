@@ -102,6 +102,11 @@ abstract class ChargeModel extends StripeModelAbstract implements ChargeModelInt
     protected $shipping;
 
     /**
+     * @var bool
+     */
+    protected $livemode;
+
+    /**
      * @return int
      */
     public function getAmount()
@@ -477,6 +482,26 @@ abstract class ChargeModel extends StripeModelAbstract implements ChargeModelInt
     public function setShipping($shipping)
     {
         $this->shipping = $shipping;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isLivemode()
+    {
+        return $this->livemode;
+    }
+
+    /**
+     * @param $livemode
+     *
+     * @return $this
+     */
+    public function setLivemode($livemode)
+    {
+        $this->livemode = $livemode;
 
         return $this;
     }

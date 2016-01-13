@@ -26,7 +26,6 @@
         <field name="recipient" column="recipient" type="string" nullable="true" />
         <field name="fingerprint" column="fingerprint" type="string" nullable="true" />
         <field name="metadata" column="metadata" type="array" nullable="true" />
-        <field name="livemode" column="livemode" type="boolean" />
     </mapped-superclass>
 
 </doctrine-mapping>

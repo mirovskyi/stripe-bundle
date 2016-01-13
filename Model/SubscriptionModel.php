@@ -493,7 +493,6 @@ abstract class SubscriptionModel extends StripeModelAbstract implements Subscrip
         $this
             ->setStripeId($object['id'])
             ->setCustomer($object['customer'])
-            ->setLivemode($object['livemode'])
             ->setStart($object['start']?\DateTime::createFromFormat('U', $object['start']):null)
             ->updateFromStripeObject($object)
         ;

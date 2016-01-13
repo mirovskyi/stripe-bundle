@@ -51,6 +51,11 @@ abstract class CustomerModel extends StripeModelAbstract implements CustomerMode
     protected $coupon;
 
     /**
+     * @var bool
+     */
+    protected $livemode;
+
+    /**
      * @return int
      */
     public function getAccountBalance()
@@ -226,6 +231,26 @@ abstract class CustomerModel extends StripeModelAbstract implements CustomerMode
     public function setCoupon($coupon)
     {
         $this->coupon = $coupon;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isLivemode()
+    {
+        return $this->livemode;
+    }
+
+    /**
+     * @param $livemode
+     *
+     * @return $this
+     */
+    public function setLivemode($livemode)
+    {
+        $this->livemode = $livemode;
 
         return $this;
     }

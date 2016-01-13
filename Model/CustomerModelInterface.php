@@ -55,4 +55,11 @@ interface CustomerModelInterface extends StripeModelInterface
      * @return $this
      */
     public function setCoupon($coupon);
+
+    /**
+     * Live mode
+     *
+     * @return boolean
+     */
+    public function isLivemode();
 }

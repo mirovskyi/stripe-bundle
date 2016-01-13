@@ -105,4 +105,11 @@ interface ChargeModelInterface extends StripeModelInterface
      * @return array
      */
     public function getShipping();
+
+    /**
+     * Live mode
+     *
+     * @return boolean
+     */
+    public function isLivemode();
 }

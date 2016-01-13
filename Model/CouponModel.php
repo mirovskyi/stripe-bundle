@@ -57,6 +57,11 @@ abstract class CouponModel extends StripeModelAbstract implements CouponModelInt
     protected $valid;
 
     /**
+     * @var bool
+     */
+    protected $livemode;
+
+    /**
      * @return string
      */
     public function getDuration()
@@ -252,6 +257,26 @@ abstract class CouponModel extends StripeModelAbstract implements CouponModelInt
     public function setValid($valid)
     {
         $this->valid = $valid;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isLivemode()
+    {
+        return $this->livemode;
+    }
+
+    /**
+     * @param $livemode
+     *
+     * @return $this
+     */
+    public function setLivemode($livemode)
+    {
+        $this->livemode = $livemode;
 
         return $this;
     }
