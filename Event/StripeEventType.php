@@ -3,8 +3,9 @@
 namespace Aimir\StripeBundle\Event;
 
 use Stripe\Object as StripeObject;
+use Symfony\Component\EventDispatcher\Event;
 
-class StripeEventType
+class StripeEventType extends Event
 {
     const CHARGE_CAPTURED = 'stripe.charge.captured';
     const CHARGE_FAILED = 'stripe.charge.failed';
