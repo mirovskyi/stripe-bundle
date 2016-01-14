@@ -307,7 +307,7 @@ abstract class CouponModel extends StripeModelAbstract implements CouponModelInt
     public function updateFromStripeObject(StripeObject $object)
     {
         $this
-            ->setMetadata($object['metadata'])
+            ->setMetadata($object['metadata']->__toArray())
             ->setTimesRedeemed($object['times_redeemed'])
             ->setRedeemBy($object['redeem_by'])
             ->setValid($object['valid'])

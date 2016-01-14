@@ -521,7 +521,7 @@ abstract class SubscriptionModel extends StripeModelAbstract implements Subscrip
             ->setTrialEnd($object['trialEnd']?\DateTime::createFromFormat('U', $object['trialEnd']):null)
             ->setTrialStart($object['trialStart']?\DateTime::createFromFormat('U', $object['trialStart']):null)
             ->setTaxPercent($object['taxPercent'])
-            ->setMetadata($object['metadata'])
+            ->setMetadata($object['metadata']->__toArray())
             ->setPlan($object['plan'] ? $object['plan']['id'] : null)
             ->setCoupon(($object['discount'] && $object['discount']['coupon'])?$object['discount']['coupon']['id']:null)
         ;

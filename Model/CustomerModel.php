@@ -286,7 +286,7 @@ abstract class CustomerModel extends StripeModelAbstract implements CustomerMode
             ->setAccountBalance($object['account_balance'])
             ->setDescription($object['description'])
             ->setEmail($object['email'])
-            ->setMetadata($object['metadata'])
+            ->setMetadata($object['metadata']->__toArray())
             ->setDelinquent($object['delinquent'])
             ->setShipping($object['shipping'] ? $object['shipping']->serializeParameters() : [])
         ;

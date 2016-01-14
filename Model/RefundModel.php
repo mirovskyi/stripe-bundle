@@ -232,7 +232,7 @@ abstract class RefundModel extends StripeModelAbstract implements RefundModelInt
      */
     public function updateFromStripeObject(StripeObject $object)
     {
-        $this->setMetadata($object['metadata']);
+        $this->setMetadata($object['metadata']->__toArray());
 
         return $this;
     }

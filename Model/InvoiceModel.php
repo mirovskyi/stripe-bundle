@@ -730,6 +730,8 @@ abstract class InvoiceModel extends StripeModelAbstract implements InvoiceModelI
             ->setDescription($object['description'])
             ->updateFromStripeObject($object)
         ;
+
+        return $this;
     }
 
     /**
@@ -747,7 +749,7 @@ abstract class InvoiceModel extends StripeModelAbstract implements InvoiceModelI
             ->setApplicationFee($object['application_fee'])
             ->setCharge($object['charge'])
             ->setStatementDescriptor($object['statementDescriptor'])
-            ->setMetadata($object['metadata'])
+            ->setMetadata($object['metadata']->__toArray())
             ->setTaxPercent($object['taxPercent'])
             ->setWebhooksDeliveredAt(\DateTime::createFromFormat('U', $object['webhooks_delivered_at']))
             ->setSubscriptionProrationDate($object['subscription_prorate_date'])

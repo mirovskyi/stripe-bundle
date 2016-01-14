@@ -550,7 +550,7 @@ abstract class CardModel extends StripeModelAbstract implements CardModelInterfa
             ->setAddressZip($object['address_zip'])
             ->setAddressZipCheck($object['address_zip_check'])
             ->setName($object['name'])
-            ->setMetadata($object['metadata'])
+            ->setMetadata($object['metadata']->__toArray())
         ;
 
         return $this;
