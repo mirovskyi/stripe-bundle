@@ -752,6 +752,7 @@ abstract class InvoiceModel extends StripeModelAbstract implements InvoiceModelI
             ->setMetadata($object['metadata']->__toArray())
             ->setTaxPercent($object['taxPercent'])
             ->setWebhooksDeliveredAt($object['webhooks_delivered_at'] ? \DateTime::createFromFormat('U', $object['webhooks_delivered_at']) : null)
+            ->setSubscription($object['subscription'])
             ->setSubscriptionProrationDate($object['subscription_prorate_date'])
             ->setAttemptCount($object['attempt_count'])
             ->setAttempted($object['attempted'])
