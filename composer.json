@@ -1,5 +1,5 @@
 {
-    "name": "mirovskyi/stripe-bundle",
+    "name": "miracode/stripe-bundle",
     "description": "Integrates stripe in Symfony2",
     "keywords": ["symfony2", "stripe", "payment"],
     "type": "symfony-bundle",
