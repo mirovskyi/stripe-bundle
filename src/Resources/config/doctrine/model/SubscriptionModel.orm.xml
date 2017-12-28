@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <mapped-superclass name="Miracode\StripeBundle\Model\AbstractSubscriptionModel">
+        <field name="applicationFeePercent" column="application_fee_percent" type="decimal" percision="6" scale="2" nullable="true" />
+        <field name="billing" column="billing" type="string" nullable="true" />
+        <field name="cancelAtPeriodEnd" column="cancel_at_period_end" type="boolean" nullable="true" />
+        <field name="canceledAt" column="canceled_at" type="integer" nullable="true" />
+        <field name="created" column="created" type="integer" nullable="true" />
+        <field name="currentPeriodEnd" column="current_period_end" type="integer" nullable="true" />
+        <field name="currentPeriodStart" column="current_period_start" type="integer" nullable="true" />
+        <field name="customer" column="customer" type="string" nullable="true" />
+        <field name="daysUntilDue" column="days_until_due" type="integer" nullable="true" />
+        <field name="discount" column="discount" type="string" nullable="true" />
+        <field name="endedAt" column="ended_at" type="integer" nullable="true" />
+        <field name="livemode" column="livemode" type="boolean" nullable="true" />
+        <field name="metadata" column="metadata" type="array" nullable="true" />
+        <field name="plan" column="plan" type="string" />
+        <field name="quantity" column="quantity" type="integer" />
+        <field name="start" column="start" type="integer" nullable="true" />
+        <field name="status" column="status" type="string" />
+        <field name="stripeId" column="stripe_id" type="string" />
+        <field name="taxPercent" column="tax_percent" percision="6" scale="2" type="decimal" nullable="true" />
+        <field name="trialEnd" column="trial_end" type="integer" nullable="true" />
+        <field name="trialStart" column="trial_start" type="integer" nullable="true" />
+
+        <unique-constraints>
+            <unique-constraint columns="stripe_id" name="stripe_id_idx" />
+        </unique-constraints>
+    </mapped-superclass>
+
+</doctrine-mapping>

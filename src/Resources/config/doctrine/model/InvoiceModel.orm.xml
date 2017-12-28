@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <mapped-superclass name="Miracode\StripeBundle\Model\AbstractInvoiceModel">
+        <field name="amountDue" column="amount_due" type="integer" nullable="true" />
+        <field name="applicationFee" column="application_fee" type="integer" nullable="true" />
+        <field name="attemptCount" column="attempt_count" type="integer" nullable="true" />
+        <field name="attempted" column="attempted" type="boolean" nullable="true" />
+        <field name="billing" column="billing" type="string" nullable="true" />
+        <field name="charge" column="charge" type="string" nullable="true" />
+        <field name="closed" column="closed" type="boolean" nullable="true" />
+        <field name="currency" column="currency" type="string" />
+        <field name="customer" column="customer" type="string" nullable="true" />
+        <field name="date" column="invoice_date" type="integer" nullable="true" />
+        <field name="description" column="description" type="string" nullable="true" />
+        <field name="discount" column="discount" type="string" nullable="true" />
+        <field name="dueDate" column="due_date" type="integer" nullable="true" />
+        <field name="endingBalance" column="ending_balance" type="integer" nullable="true" />
+        <field name="forgiven" column="forgiven" type="boolean" nullable="true" />
+        <field name="livemode" column="livemode" type="boolean" />
+        <field name="metadata" column="metadata" type="array" nullable="true" />
+        <field name="nextPaymentAttempt" column="next_payment_attempt" type="integer" nullable="true" />
+        <field name="number" column="number" type="string" nullable="true" />
+        <field name="paid" column="paid" type="boolean" nullable="true" />
+        <field name="periodEnd" column="period_end" type="datetime" nullable="true" />
+        <field name="periodStart" column="period_start" type="datetime" nullable="true" />
+        <field name="receiptNumber" column="recipient_number" type="string" nullable="true" />
+        <field name="startingBalance" column="starting_balance" type="integer" nullable="true" />
+        <field name="statementDescriptor" column="statement_descriptor" type="string" nullable="true" />
+        <field name="stripeId" column="stripe_id" type="string" />
+        <field name="subscription" column="subscription" type="string" nullable="true" />
+        <field name="subscriptionProrationDate" column="subscription_proration_date" type="integer" nullable="true" />
+        <field name="subtotal" column="subtotal" type="integer" nullable="true" />
+        <field name="tax" column="tax" type="integer" nullable="true" />
+        <field name="taxPercent" column="tax_percent" type="decimal" precision="6" scale="2" nullable="true" />
+        <field name="total" column="total" type="integer" nullable="true" />
+        <field name="webhooksDeliveredAt" column="webhooks_delivered_at" type="integer" nullable="true" />
+
+        <unique-constraints>
+            <unique-constraint columns="stripe_id" name="stripe_id_idx" />
+        </unique-constraints>
+    </mapped-superclass>
+
+</doctrine-mapping>

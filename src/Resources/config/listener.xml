@@ -1,0 +1,58 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="miracode_stripe.subscriber.card"
+                 class="Miracode\StripeBundle\EventListener\CardEventListener">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="miracode_stripe.manager.card" />
+        </service>
+
+        <service id="miracode_stripe.subscriber.charge"
+                 class="Miracode\StripeBundle\EventListener\ChargeEventSubscriber">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="miracode_stripe.manager.charge" />
+        </service>
+
+        <service id="miracode_stripe.subscriber.coupon"
+                 class="Miracode\StripeBundle\EventListener\CouponEventSubscriber">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="miracode_stripe.manager.coupon" />
+        </service>
+
+        <service id="miracode_stripe.subscriber.customer"
+                 class="Miracode\StripeBundle\EventListener\CustomerEventSubscriber">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="miracode_stripe.manager.customer" />
+        </service>
+
+        <service id="miracode_stripe.subscriber.discount"
+                 class="Miracode\StripeBundle\EventListener\DiscountEventSubscriber">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="miracode_stripe.manager.discount" />
+        </service>
+
+        <service id="miracode_stripe.subscriber.invoice"
+                 class="Miracode\StripeBundle\EventListener\InvoiceEventSubscriber">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="miracode_stripe.manager.invoice" />
+        </service>
+
+        <service id="miracode_stripe.subscriber.plan"
+                 class="Miracode\StripeBundle\EventListener\PlanEventSubscriber">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="miracode_stripe.manager.plan" />
+        </service>
+
+        <service id="miracode_stripe.subscriber.subscription"
+                 class="Miracode\StripeBundle\EventListener\SubscriptionEventSubscriber">
+            <tag name="kernel.event_subscriber" />
+            <argument type="service" id="miracode_stripe.manager.subscription" />
+        </service>
+
+    </services>
+
+</container>

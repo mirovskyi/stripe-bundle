@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <mapped-superclass name="Miracode\StripeBundle\Model\AbstractCouponModel">
+        <field name="amountOff"  column="amount_off" type="integer" nullable="true" />
+        <field name="created" column="created" type="integer" />
+        <field name="currency" column="currency" type="string" />
+        <field name="duration" column="duration" type="string" />
+        <field name="durationInMonths" column="duration_in_months" type="integer" nullable="true" />
+        <field name="livemode" column="livemode" type="boolean" />
+        <field name="metadata" column="metadata" type="array" nullable="true" />
+        <field name="maxRedemptions" column="max_redemptions" type="integer" nullable="true" />
+        <field name="percentOff" column="percent_off" type="integer" nullable="true" />
+        <field name="redeemBy" column="redeem_by" type="integer" nullable="true" />
+        <field name="stripeId" column="stripe_id" type="string" />
+        <field name="timesRedeemed" column="times_redeemed" type="integer" nullable="true" />
+        <field name="valid" column="valid" type="boolean" nullable="true" />
+
+        <unique-constraints>
+            <unique-constraint columns="stripe_id" name="stripe_id_idx" />
+        </unique-constraints>
+    </mapped-superclass>
+
+</doctrine-mapping>
