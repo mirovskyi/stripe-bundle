@@ -52,7 +52,7 @@ class DoctrineORMModelManager implements ModelManagerInterface
      */
     public function support(StripeObject $object)
     {
-        return isset($this->modelClasses[$object->object]);
+        return isset($this->modelClasses[$this->getObjectType($object)]);
     }
 
     /**
@@ -80,7 +80,7 @@ class DoctrineORMModelManager implements ModelManagerInterface
      *
      * @return StripeModelInterface
      */
-    public function save(StripeObject $object, $flush = FALSE)
+    public function save(StripeObject $object, $flush = false)
     {
         $model = $this->retrieve($object);
         if (!$model) {
@@ -104,7 +104,7 @@ class DoctrineORMModelManager implements ModelManagerInterface
      *
      * @return StripeModelInterface|null
      */
-    public function remove(StripeObject $object, $flush = FALSE)
+    public function remove(StripeObject $object, $flush = false)
     {
         $model = $this->retrieve($object);
         if (!$model) {
@@ -123,6 +123,30 @@ class DoctrineORMModelManager implements ModelManagerInterface
     }
 
     /**
+     * Get stripe object type
+     *
+     * @param StripeObject $object
+     *
+     * @return string
+     * @throws StripeException
+     */
+    protected function getObjectType(StripeObject $object)
+    {
+        if (empty($object->object)) {
+            if (isset($object->deleted) && isset($object->id)) {
+                throw new StripeException(sprintf(
+                    'Couldn\'t detect stripe object type. '
+                    . 'Stripe object with ID `%s` has been already deleted.',
+                    $object->id
+                ));
+            }
+            throw new StripeException('Couldn\'t detect stripe object type.');
+        }
+
+        return $object->object;
+    }
+
+    /**
      * Check object support
      *
      * @param \Stripe\StripeObject $object
@@ -136,7 +160,7 @@ class DoctrineORMModelManager implements ModelManagerInterface
                 'Stripe object `%1$s` does not support. '
                 . 'Please specify model class for object type `%1$s` '
                 . 'in miracode_stripe.database.model.%1$s',
-                $object->object
+                $this->getObjectType($object)
             ));
         }
     }
@@ -150,7 +174,7 @@ class DoctrineORMModelManager implements ModelManagerInterface
      */
     protected function modelClass(StripeObject $object)
     {
-        return $this->modelClasses[$object->object];
+        return $this->modelClasses[$this->getObjectType($object)];
     }
 
     /**

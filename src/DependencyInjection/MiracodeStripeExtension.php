@@ -81,6 +81,7 @@ class MiracodeStripeExtension extends Extension
                 new Reference('miracode_stripe.model_transformer'),
                 '%miracode_stripe.model_classes%'
             ]);
+            $definition->setPublic(true);
             $container->setDefinition(
                 'miracode_stripe.model_manager',
                 $definition
