@@ -3,11 +3,11 @@
                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <mapped-superclass name="Miracode\StripeBundle\Model\RefundModel">
+    <mapped-superclass name="Miracode\StripeBundle\Model\AbstractRefundModel">
         <field name="amount" column="amount" type="integer" />
         <field name="balanceTransaction" column="balance_transaction" type="string" nullable="true" />
         <field name="charge" column="charge" type="string" />
-        <field name="created" column="created" type="datetime" />
+        <field name="created" column="created" type="integer" />
         <field name="currency" column="currency" type="string" />
         <field name="metadata" column="metadata" type="array" nullable="true" />
         <field name="failureBalanceTransaction" column="failure_balance_transaction" type="string" nullable="true" />

@@ -1,7 +1,7 @@
 {
     "name": "miracode/stripe-bundle",
-    "description": "Integrates stripe in Symfony2",
-    "keywords": ["symfony2", "stripe", "payment"],
+    "description": "Integrates stripe in Symfony project",
+    "keywords": ["symfony", "stripe", "payment"],
     "type": "symfony-bundle",
     "license": "MIT",
     "authors": [
@@ -11,19 +11,18 @@
         }
     ],
     "require": {
-        "php"                          : ">=5.3.0",
-        "symfony/dependency-injection" : ">=2.3",
-        "symfony/event-dispatcher"     : ">=2.3",
+        "php"                          : ">=5.4.0",
+        "symfony/framework-bundle"     : ">=2.4",
         "symfony/config"               : ">=2.3",
-        "symfony/yaml"                 : ">=2.3",
-        "stripe/stripe-php"            : ">=3.0"
+        "stripe/stripe-php"            : ">=3.0",
+        "doctrine/common"              : ">=2.2"
     },
     "suggest": {
-        "symfony/framework-bundle" : "To use this lib as a full Symfony Bundle and to use the profiler data collector"
+        "doctrine/orm" : "If you want to save stripe data in database"
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "0.9.x-dev"
+            "dev-master": "1.0.x-dev"
         }
     },
     "autoload": {

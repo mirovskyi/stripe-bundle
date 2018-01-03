@@ -2,9 +2,9 @@
 
 namespace Miracode\StripeBundle;
 
+use Miracode\StripeBundle\DependencyInjection\Compiler\RegisterDoctrineMappingPass;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DoctrineOrmMappingsPass;
 
 class MiracodeStripeBundle extends Bundle
 {
@@ -23,23 +23,8 @@ class MiracodeStripeBundle extends Bundle
      */
     public function build(ContainerBuilder $container)
     {
-        $this->addRegisterMappingPass($container);
-    }
-
-    /**
-     * Register ORM model mapping
-     *
-     * @param ContainerBuilder $container
-     */
-    protected function addRegisterMappingPass(ContainerBuilder $container)
-    {
-        $mappings = array(
-            realpath(__DIR__ . '/Resources/config/doctrine/model') =>
-                'Miracode\StripeBundle\Model'
-        );
-
-        $container->addCompilerPass(
-            DoctrineOrmMappingsPass::createXmlMappingDriver($mappings)
-        );
+        if ($container->hasExtension('doctrine')) {
+            $container->addCompilerPass(new RegisterDoctrineMappingPass());
+        }
     }
 }

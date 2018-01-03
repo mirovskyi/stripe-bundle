@@ -28,13 +28,25 @@ class MiracodeStripeExtension extends Extension
             $container,
             new FileLocator(__DIR__.'/../Resources/config')
         );
+        $loader->load('services.xml');
 
         $container->setParameter(
             'miracode_stripe.secret_key',
             $config['secret_key']
         );
 
-        if (!empty($config['database'])) {
+        if (!empty($config['database']) && !empty($config['database']['model'])) {
+            if (!empty($config['database']['model_transformer'])) {
+                $container->setAlias(
+                    'miracode_stripe.model_transformer',
+                    $config['database']['model_transformer']
+                );
+            } else {
+                $container->setAlias(
+                    'miracode_stripe.model_transformer',
+                    'miracode_stripe.model_transformer.annotation'
+                );
+            }
             if ($this->configureDatabase($config['database'], $container)) {
                 $loader->load('listener.xml');
             }
@@ -48,9 +60,6 @@ class MiracodeStripeExtension extends Extension
      * @return bool
      */
     private function configureDatabase($config, ContainerBuilder $container) {
-        if (!isset($config['model'])) {
-            return false;
-        }
         if ($config['driver'] == 'orm') {
             if (!isset($config['object_manager'])) {
                 $config['object_manager'] = 'doctrine.orm.entity_manager';
@@ -59,30 +68,28 @@ class MiracodeStripeExtension extends Extension
                 'miracode_stripe.object_manager',
                 $config['object_manager']
             );
-            //TODO: take from configuration settings
-            $availableModels = ['card','charge','coupon','customer','discount','invoice','plan','refund','subscription'];
-            foreach ($availableModels as $modelName) {
-                $definition = new Definition();
-                if (isset($config['model'][$modelName])) {
-                    $definition->setClass(
-                        'Miracode\\StripeBundle\\Manager\\Doctrine\\DoctrineORMManager'
-                    );
-                    $definition->setArguments([
-                        new Reference('miracode_stripe.object_manager'),
-                        $config['model'][$modelName]
-                    ]);
-                } else {
-                    $definition->setClass(
-                        'Miracode\\StripeBundle\\Manager\\NoneManager'
-                    );
-                }
-                $container->setDefinition(
-                    sprintf('miracode_stripe.manager.%s', $modelName),
-                    $definition
-                );
-            }
-        }
+            $container->setParameter(
+                'miracode_stripe.model_classes',
+                $config['model']
+            );
+            $definition = new Definition();
+            $definition->setClass(
+                'Miracode\\StripeBundle\\Manager\\Doctrine\\DoctrineORMModelManager'
+            );
+            $definition->setArguments([
+                new Reference('miracode_stripe.object_manager'),
+                new Reference('miracode_stripe.model_transformer'),
+                '%miracode_stripe.model_classes%'
+            ]);
+            $container->setDefinition(
+                'miracode_stripe.model_manager',
+                $definition
+            );
 
-        return true;
+            return true;
+        }
+        //TODO: support other drivers
+
+        return false;
     }
 }

@@ -11,21 +11,22 @@
         <field name="billing" column="billing" type="string" nullable="true" />
         <field name="charge" column="charge" type="string" nullable="true" />
         <field name="closed" column="closed" type="boolean" nullable="true" />
+        <field name="coupon" column="coupon" type="string" nullable="true" />
         <field name="currency" column="currency" type="string" />
         <field name="customer" column="customer" type="string" nullable="true" />
         <field name="date" column="invoice_date" type="integer" nullable="true" />
         <field name="description" column="description" type="string" nullable="true" />
-        <field name="discount" column="discount" type="string" nullable="true" />
         <field name="dueDate" column="due_date" type="integer" nullable="true" />
         <field name="endingBalance" column="ending_balance" type="integer" nullable="true" />
         <field name="forgiven" column="forgiven" type="boolean" nullable="true" />
+        <field name="lines" column="invoice_lines" type="array" nullable="true" />
         <field name="livemode" column="livemode" type="boolean" />
         <field name="metadata" column="metadata" type="array" nullable="true" />
         <field name="nextPaymentAttempt" column="next_payment_attempt" type="integer" nullable="true" />
         <field name="number" column="number" type="string" nullable="true" />
         <field name="paid" column="paid" type="boolean" nullable="true" />
-        <field name="periodEnd" column="period_end" type="datetime" nullable="true" />
-        <field name="periodStart" column="period_start" type="datetime" nullable="true" />
+        <field name="periodEnd" column="period_end" type="integer" nullable="true" />
+        <field name="periodStart" column="period_start" type="integer" nullable="true" />
         <field name="receiptNumber" column="recipient_number" type="string" nullable="true" />
         <field name="startingBalance" column="starting_balance" type="integer" nullable="true" />
         <field name="statementDescriptor" column="statement_descriptor" type="string" nullable="true" />

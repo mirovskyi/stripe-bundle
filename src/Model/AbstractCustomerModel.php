@@ -14,6 +14,13 @@ abstract class AbstractCustomerModel extends StripeModel
     protected $accountBalance;
 
     /**
+     * @StripeObjectParam(name="discount", embeddedId="coupon.id")
+     *
+     * @var string
+     */
+    protected $coupon;
+
+    /**
      * @StripeObjectParam
      *
      * @var int
@@ -47,11 +54,6 @@ abstract class AbstractCustomerModel extends StripeModel
      * @var string
      */
     protected $description;
-
-    /**
-     * @var
-     */
-    protected $discount;
 
     /**
      * @StripeObjectParam
@@ -97,6 +99,26 @@ abstract class AbstractCustomerModel extends StripeModel
     public function setAccountBalance($accountBalance)
     {
         $this->accountBalance = $accountBalance;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCoupon()
+    {
+        return $this->coupon;
+    }
+
+    /**
+     * @param string $coupon
+     *
+     * @return $this
+     */
+    public function setCoupon($coupon)
+    {
+        $this->coupon = $coupon;
 
         return $this;
     }
@@ -202,26 +224,6 @@ abstract class AbstractCustomerModel extends StripeModel
     }
 
     /**
-     * @return mixed
-     */
-    public function getDiscount()
-    {
-        return $this->discount;
-    }
-
-    /**
-     * @param mixed $discount
-     *
-     * @return $this
-     */
-    public function setDiscount($discount)
-    {
-        $this->discount = $discount;
-
-        return $this;
-    }
-
-    /**
      * @return string
      */
     public function getEmail()
@@ -299,5 +301,13 @@ abstract class AbstractCustomerModel extends StripeModel
         $this->shipping = $shipping;
 
         return $this;
+    }
+
+    /**
+     * @return \Stripe\Customer
+     */
+    public function retrieveStripeObject()
+    {
+        return \Stripe\Customer::retrieve($this->getStripeId());
     }
 }

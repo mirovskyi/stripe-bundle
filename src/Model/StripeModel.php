@@ -3,7 +3,6 @@
 namespace Miracode\StripeBundle\Model;
 
 use Miracode\StripeBundle\Annotation\StripeObjectParam;
-use Stripe\StripeObject;
 
 class StripeModel implements StripeModelInterface
 {
@@ -13,19 +12,6 @@ class StripeModel implements StripeModelInterface
      * @var string
      */
     protected $stripeId;
-
-    /**
-     * Update model object from stripe data
-     *
-     * @param StripeObject $object
-     * @return $this
-     */
-    public function populateFromStripeObject(StripeObject $object)
-    {
-        Transformer\AnnotationTransformer::transform($this, $object);
-
-        return $this;
-    }
 
     /**
      * Retrieve stripe object ID

@@ -4,6 +4,9 @@ namespace Miracode\StripeBundle\Model;
 
 use Miracode\StripeBundle\Annotation\StripeObjectParam;
 
+/**
+ * @Annotation
+ */
 abstract class AbstractCardModel extends StripeModel
 {
     /**

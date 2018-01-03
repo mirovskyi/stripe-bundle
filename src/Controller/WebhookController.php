@@ -9,14 +9,21 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Stripe\Event as StripeEventApi;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class WebhookController extends Controller
 {
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     * @throws StripeException
+     */
     public function handleAction(Request $request)
     {
         $requestData = json_decode($request->getContent());
         if (!isset($requestData->id) || !isset($requestData->object)) {
-            throw new StripeException('Invalid webhook request data');
+            throw new BadRequestHttpException('Invalid webhook request data');
         }
         if ($requestData->object !== StripeObjectType::EVENT) {
             throw new StripeException('Unknown stripe object type in webhook');

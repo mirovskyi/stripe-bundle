@@ -12,12 +12,4 @@ interface StripeModelInterface
      * return string
      */
     public function getStripeId();
-
-    /**
-     * Update model object from stripe data
-     *
-     * @param StripeObject $object
-     * @return $this
-     */
-    public function populateFromStripeObject(StripeObject $object);
 }

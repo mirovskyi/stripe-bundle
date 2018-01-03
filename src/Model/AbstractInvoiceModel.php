@@ -56,6 +56,13 @@ abstract class AbstractInvoiceModel extends StripeModel
     protected $closed;
 
     /**
+     * @StripeObjectParam(name="discount", embeddedId="coupon.id")
+     *
+     * @var string
+     */
+    protected $coupon;
+
+    /**
      * @StripeObjectParam
      *
      * @var string
@@ -84,13 +91,6 @@ abstract class AbstractInvoiceModel extends StripeModel
     protected $description;
 
     /**
-     * @StripeObjectParam
-     *
-     * @var string
-     */
-    protected $discount;
-
-    /**
      * @StripeObjectParam(name="due_date")
      *
      * @var int
@@ -110,6 +110,13 @@ abstract class AbstractInvoiceModel extends StripeModel
      * @var bool
      */
     protected $forgiven;
+
+    /**
+     * @StripeObjectParam
+     *
+     * @var array
+     */
+    protected $lines;
 
     /**
      * @StripeObjectParam
@@ -373,6 +380,26 @@ abstract class AbstractInvoiceModel extends StripeModel
     /**
      * @return string
      */
+    public function getCoupon()
+    {
+        return $this->coupon;
+    }
+
+    /**
+     * @param string $coupon
+     *
+     * @return $this
+     */
+    public function setCoupon($coupon)
+    {
+        $this->coupon = $coupon;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
     public function getCurrency()
     {
         return $this->currency;
@@ -451,26 +478,6 @@ abstract class AbstractInvoiceModel extends StripeModel
     }
 
     /**
-     * @return string
-     */
-    public function getDiscount()
-    {
-        return $this->discount;
-    }
-
-    /**
-     * @param string $discount
-     *
-     * @return $this
-     */
-    public function setDiscount($discount)
-    {
-        $this->discount = $discount;
-
-        return $this;
-    }
-
-    /**
      * @return int
      */
     public function getDueDate()
@@ -526,6 +533,26 @@ abstract class AbstractInvoiceModel extends StripeModel
     public function setForgiven($forgiven)
     {
         $this->forgiven = $forgiven;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getLines()
+    {
+        return $this->lines;
+    }
+
+    /**
+     * @param array $lines
+     *
+     * @return $this
+     */
+    public function setLines($lines)
+    {
+        $this->lines = $lines;
 
         return $this;
     }

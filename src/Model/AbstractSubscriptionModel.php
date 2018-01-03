@@ -35,6 +35,13 @@ abstract class AbstractSubscriptionModel extends StripeModel
     protected $canceledAt;
 
     /**
+     * @StripeObjectParam(name="discount", embeddedId="coupon.id")
+     *
+     * @var string
+     */
+    protected $coupon;
+
+    /**
      * @StripeObjectParam
      *
      * @var int
@@ -70,18 +77,18 @@ abstract class AbstractSubscriptionModel extends StripeModel
     protected $daysUntilDue;
 
     /**
-     * @StripeObjectParam(embeddedId="id")
-     *
-     * @var string
-     */
-    protected $discount;
-
-    /**
      * @StripeObjectParam(name="ended_at")
      *
      * @var int
      */
     protected $endedAt;
+
+    /**
+     * @StripeObjectParam
+     *
+     * @var array
+     */
+    protected $items;
 
     /**
      * @StripeObjectParam
@@ -227,6 +234,26 @@ abstract class AbstractSubscriptionModel extends StripeModel
     }
 
     /**
+     * @return string
+     */
+    public function getCoupon()
+    {
+        return $this->coupon;
+    }
+
+    /**
+     * @param string $coupon
+     *
+     * @return $this
+     */
+    public function setCoupon($coupon)
+    {
+        $this->coupon = $coupon;
+
+        return $this;
+    }
+
+    /**
      * @return int
      */
     public function getCreated()
@@ -327,26 +354,6 @@ abstract class AbstractSubscriptionModel extends StripeModel
     }
 
     /**
-     * @return string
-     */
-    public function getDiscount()
-    {
-        return $this->discount;
-    }
-
-    /**
-     * @param string $discount
-     *
-     * @return $this
-     */
-    public function setDiscount($discount)
-    {
-        $this->discount = $discount;
-
-        return $this;
-    }
-
-    /**
      * @return int
      */
     public function getEndedAt()
@@ -362,6 +369,26 @@ abstract class AbstractSubscriptionModel extends StripeModel
     public function setEndedAt($endedAt)
     {
         $this->endedAt = $endedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getItems()
+    {
+        return $this->items;
+    }
+
+    /**
+     * @param array $items
+     *
+     * @return $this
+     */
+    public function setItems($items)
+    {
+        $this->items = $items;
 
         return $this;
     }

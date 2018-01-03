@@ -8,9 +8,9 @@
         <field name="amountRefunded" column="amount_refunded" type="integer" />
         <field name="balanceTransaction" column="balance_transaction" type="string" nullable="true" />
         <field name="captured"  column="captured" type="boolean" nullable="true" />
-        <field name="created" column="created" type="datetime" />
+        <field name="created" column="created" type="integer" />
         <field name="currency" column="currency" type="string" />
-        <field name="customer" column="customer" type="string" />
+        <field name="customer" column="customer" type="string" nullable="true" />
         <field name="description" column="description" type="string" nullable="true" />
         <field name="dispute" column="dispute" type="string" nullable="true" />
         <field name="failureCode" column="failure_code" type="string" nullable="true" />
@@ -19,8 +19,8 @@
         <field name="invoice" column="invoice" type="string" nullable="true" />
         <field name="livemode" column="livemode" type="boolean" />
         <field name="metadata" column="metadata" type="array" nullable="true" />
-        <field name="order" column="order" type="string" nullable="true" />
-        <field name="outcome" column="outcome" type="string" nullable="true" />
+        <field name="order" column="order_id" type="string" nullable="true" />
+        <field name="outcome" column="outcome" type="array" nullable="true" />
         <field name="paid" column="paid" type="boolean" />
         <field name="receiptEmail" column="receipt_email" type="string" nullable="true" />
         <field name="receiptNumber" column="receipt_number" type="string" nullable="true" />

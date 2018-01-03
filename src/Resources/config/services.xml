@@ -5,12 +5,9 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="miracode_stripe.subscriber.stripe_event"
-                 class="Miracode\StripeBundle\EventListener\StripeEventSubscriber">
-            <tag name="kernel.event_subscriber" />
-            <argument type="service" id="miracode_stripe.model_manager" />
+        <service id="miracode_stripe.model_transformer.annotation"
+                 class="Miracode\StripeBundle\Transformer\AnnotationTransformer">
         </service>
-
     </services>
 
 </container>
