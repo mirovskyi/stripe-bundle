@@ -1,6 +1,6 @@
 {
     "name": "miracode/stripe-bundle",
-    "description": "Integrates stripe in Symfony project",
+    "description": "Symfony bundle to integrate Stripe PHP SDK. Ability to save Stripe objects in database using Doctrine.",
     "keywords": ["symfony", "stripe", "payment"],
     "type": "symfony-bundle",
     "license": "MIT",
@@ -16,6 +16,9 @@
         "symfony/config"               : ">=2.3",
         "stripe/stripe-php"            : ">=3.0",
         "doctrine/common"              : ">=2.2"
+    },
+    "require-dev": {
+        "doctrine/orm"                 : ">=2.2"
     },
     "suggest": {
         "doctrine/orm" : "If you want to save stripe data in database"
