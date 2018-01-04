@@ -2,12 +2,13 @@
 
 namespace Miracode\StripeBundle\Tests\DependencyInjection;
 
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Miracode\StripeBundle\DependencyInjection\MiracodeStripeExtension;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\Yaml\Parser;
 
-class MiracodeStripeExtensionTest extends \PHPUnit_Framework_TestCase
+class MiracodeStripeExtensionTest extends TestCase
 {
     /**
      * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException

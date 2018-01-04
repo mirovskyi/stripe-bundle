@@ -3,9 +3,10 @@
 namespace Miracode\StripeBundle\Tests\Event;
 
 use Miracode\StripeBundle\Event\StripeEvent;
+use PHPUnit\Framework\TestCase;
 use Stripe\StripeObject;
 
-class StripeEventTest extends \PHPUnit_Framework_TestCase
+class StripeEventTest extends TestCase
 {
     public function testEvent()
     {

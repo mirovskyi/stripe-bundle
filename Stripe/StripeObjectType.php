@@ -17,5 +17,5 @@ class StripeObjectType
     const PLAN         = 'plan';
     const REFUND       = 'refund';
     const SUBSCRIPTION = 'subscription';
-    const LIST         = 'list';
+    const COLLECTION   = 'list';
 }
