@@ -73,6 +73,21 @@ class DoctrineORMModelManager implements ModelManagerInterface
     }
 
     /**
+     * Retrieve model by stripe ID and stripe object type
+     *
+     * @param string $id
+     * @param string $objectType
+     * @return StripeModelInterface|null
+     */
+    public function retrieveByStripeId($id, $objectType)
+    {
+        $stripeObject = new StripeObject($id);
+        $stripeObject->object = $objectType;
+
+        return $this->retrieve($stripeObject);
+    }
+
+    /**
      * Save stripe object in database
      *
      * @param StripeObject $object

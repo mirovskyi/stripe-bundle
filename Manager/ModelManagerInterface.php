@@ -26,6 +26,15 @@ interface ModelManagerInterface
     public function retrieve(StripeObject $object);
 
     /**
+     * Retrieve model by stripe ID and stripe object type
+     *
+     * @param string $objectType
+     * @param string $id
+     * @return StripeModelInterface|null
+     */
+    public function retrieveByStripeId($objectType, $id);
+
+    /**
      * Save stripe object in database
      *
      * @param StripeObject $object
