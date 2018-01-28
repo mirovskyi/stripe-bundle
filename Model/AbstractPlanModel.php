@@ -35,7 +35,7 @@ abstract class AbstractPlanModel extends StripeModel
     protected $interval;
 
     /**
-     * @StripeObjectParam
+     * @StripeObjectParam(name="interval_count")
      *
      * @var int
      */
