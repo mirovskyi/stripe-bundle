@@ -16,7 +16,7 @@ trait SafeDeleteTrait
     /**
      * @return bool
      */
-    public function isDeleted(): bool
+    public function isDeleted()
     {
         return $this->deleted;
     }
