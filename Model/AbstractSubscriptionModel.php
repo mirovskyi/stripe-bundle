@@ -28,7 +28,7 @@ abstract class AbstractSubscriptionModel extends StripeModel
     protected $cancelAtPeriodEnd;
 
     /**
-     * @StripeObjectParam(name="cancel_at")
+     * @StripeObjectParam(name="canceled_at")
      *
      * @var int
      */
