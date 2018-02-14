@@ -46,7 +46,9 @@ class AnnotationTransformer implements TransformerInterface
                         $value = $value[$path];
                     }
                 } else {
-                    if ($value->object == StripeObjectType::COLLECTION) {
+                    if (isset($value->object) &&
+                        $value->object == StripeObjectType::COLLECTION
+                    ) {
                         $value = array_map(function(StripeObject $obj) {
                             return $obj->__toArray(true);
                         }, $value->data);
