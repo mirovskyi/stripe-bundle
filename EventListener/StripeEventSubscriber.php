@@ -49,7 +49,6 @@ class StripeEventSubscriber implements EventSubscriberInterface
             StripeEvent::INVOICE_PAYMENT_FAILED => 'onStripeEvent',
             StripeEvent::INVOICE_PAYMENT_SUCCEEDED => 'onStripeEvent',
             StripeEvent::INVOICE_SENT => 'onStripeEvent',
-            StripeEvent::INVOICE_UPCOMING => 'onStripeEvent',
             StripeEvent::INVOICE_UPDATED => 'onStripeEvent',
             StripeEvent::PLAN_CREATED => 'onStripeEvent',
             StripeEvent::PLAN_UPDATED => 'onStripeEvent',
