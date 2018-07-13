@@ -31,6 +31,18 @@ class MiracodeStripeExtensionTest extends TestCase
         );
     }
 
+    public function testStripeWebhookSecret()
+    {
+        $config = $this->getSimpleConfig();
+        $container = new ContainerBuilder();
+        $extension = new MiracodeStripeExtension();
+        $extension->load($config, $container);
+        $this->assertEquals(
+            $config['miracode_stripe']['webhook_secret'],
+            $container->getParameter('miracode_stripe.webhook_secret')
+        );
+    }
+
     public function testConfigWithoutDatabase()
     {
         $config = $this->getSimpleConfig();
@@ -108,6 +120,7 @@ class MiracodeStripeExtensionTest extends TestCase
         $yaml = <<<EOF
 miracode_stripe:
     secret_key: some_secret_key
+    webhook_secret: plop_secret_webhook
 EOF;
         $parser = new Parser();
 
