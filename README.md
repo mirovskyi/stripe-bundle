@@ -62,7 +62,7 @@ $customer = \Stripe\Customer::create([
 ]);
 ```
 
-####Stripe Events
+#### Stripe Events
 
 Add bundle routing configuration to enable Stripe webhooks handler
 
@@ -105,7 +105,7 @@ class StripeSubscriber implements EventSubscriberInterface
 }
 ```
 
-####Saving stripe data in database
+#### Saving stripe data in database
 
 Now only Doctrine ORM driver is available.
 
