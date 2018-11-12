@@ -5,6 +5,8 @@ namespace Miracode\StripeBundle\Controller;
 use Miracode\StripeBundle\Event\StripeEvent;
 use Miracode\StripeBundle\Stripe\StripeObjectType;
 use Miracode\StripeBundle\StripeException;
+use Stripe\Error\SignatureVerification;
+use Stripe\Webhook;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,6 +30,28 @@ class WebhookController extends Controller
         if ($requestData->object !== StripeObjectType::EVENT) {
             throw new StripeException('Unknown stripe object type in webhook');
         }
+
+        // secure webhook with event signature: https://stripe.com/docs/webhooks/signatures
+        $webhookSecret = $this->getParameter('miracode_stripe.webhook_secret');
+        if($webhookSecret !== null) {
+            $sigHeader = $request->headers->get('Stripe-Signature');
+            try {
+                $event = \Stripe\Webhook::constructEvent(
+                    $request->getContent(), $sigHeader, $webhookSecret
+                );
+            } catch(\UnexpectedValueException $e) {
+                // Invalid payload
+                throw new StripeException(
+                    sprintf('Invalid event payload', $requestData->id)
+                );
+            } catch(\Stripe\Error\SignatureVerification $e) {
+                // Invalid signature
+                throw new StripeException(
+                    sprintf('Invalid event signature', $requestData->id)
+                );
+            }
+        }
+
         $stripeEventApi = new StripeEventApi();
         if (!$stripeEventObject = $stripeEventApi->retrieve($requestData->id)) {
             throw new StripeException(
