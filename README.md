@@ -61,6 +61,19 @@ $customer = \Stripe\Customer::create([
     'email' => 'newcustomer@example.com'
 ]);
 ```
+or inject the StripeClient
+
+``` php
+protected $stripeClient;
+
+public function __construct(\Miracode\StripeBundle\Stripe\StripeClient $stripeClient){
+    $this->stripeClient = $stripeClient;
+}
+
+public function yourMethod(){
+    $customer = $this->stripeClient->retrieveCustomer($stripeCustomerId) 
+}
+```
 
 ####Stripe Events
 
@@ -70,14 +83,6 @@ Add bundle routing configuration to enable Stripe webhooks handler
 # app/config/routing.yml (or config/routing.yaml for Symfony >=3.4)
 miracode_stripe:
     resource: '@MiracodeStripeBundle/Resources/config/routing.xml'
-```
-
-To implement webhook security add the Stripe generated signing secret key to the configration
-
-``` yaml
-# app/config/config.yml (or config/packages/miracode_stripe.yaml for Symfony >=3.4)
-miracode_stripe:
-    webhook_secret: '%webhook_secret_key'
 ```
 
 This will register route with url `/stripe/webhook`. You should add this webhook endpoint in Stripe Dashboard. Finally you will be able to listen all Stripe events.
@@ -99,7 +104,7 @@ class StripeSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            'stripe.charge.succeeded' => 'onChargeSucceededEvent',
+            StripeEvent::CHARGE_SUCCEEDED => 'onChargeSucceededEvent',
         ];
     }
 
@@ -108,10 +113,62 @@ class StripeSubscriber implements EventSubscriberInterface
     public function onChargeSucceededEvent(StripeEvent $event)
     {
         $stripeEvent = $event->getEvent(); //Stripe event object (instanceof \Stripe\Event)
-        $charge = $event->getObjectData(); //Stripe charge object (instanceof \Stripe\Charge)
+        $charge = $event->getDataObject(); //Stripe charge object (instanceof \Stripe\Charge)
     }
 }
 ```
+
+For more customised functions you can ignore and extend the bundle subscriber with your own for custom functionality.  
+
+First ignore the default subscriber in the bundle config.
+``` yaml
+# app/config/config.yml (or config/packages/miracode_stripe.yaml for Symfony >=3.4)
+miracode_stripe:
+    secret_key: "%stripe_secret_key%"
+    use_bundle_subscriber: false
+```
+Then create your own subscriber that extends the bundle subscriber.  (Autowire or declare the new subscriber)
+``` php
+// AppBundle/EventListener/StripeEventSubscriber.php
+
+namespace App\EventListener;
+
+use Miracode\StripeBundle\Event\StripeEvent;
+use Miracode\StripeBundle\EventListener\StripeEventSubscriber as MiracodeStripeEventSubscriber
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+
+class StripeEventSubscriber extends MiracodeStripeEventSubscriber implements EventSubscriberInterface
+{
+    public function __construct($modelManager){
+        parent::__construct($modelManager);
+    }
+    
+    public static function getSubscribedEvents()
+        {
+            // Get the Stripe Bundle default subscribed events.
+            $parentSubscribedEvents = parent::getSubscribedEvents();
+    
+            // Add/Overwrite events for this application
+            $overideEvents = [
+                StripeEvent::INVOICE_UPCOMING => 'onInvoiceUpcoming',
+             ];
+    
+            // Merge the array, replacing the original events.
+            $subscribedEvents = array_replace($parentSubscribedEvents, $overideEvents);
+    
+            return $subscribedEvents;
+        }
+
+    //[...]
+    
+    public function onInvoiceUpcoming(StripeEvent $event)
+    {
+        $stripeEvent = $event->getEvent(); //Stripe event object (instanceof \Stripe\Event)
+        $charge = $event->getDataObject(); //Stripe charge object (instanceof \Stripe\Charge)
+    }
+}
+```
+
 
 ####Saving stripe data in database
 
@@ -125,6 +182,7 @@ In bundle there are abstract entity classes with orm mapping for main stripe obj
  - customer: `Miracode\StripeBundle\Model\AbstractCustomerModel`
  - invoice: `Miracode\StripeBundle\Model\AbstractInvoiceModel`
  - plan: `Miracode\StripeBundle\Model\AbstractPlanModel`
+ - product: `Miracode\StripeBundle\Model\AbstractProductModel`
  - refund: `Miracode\StripeBundle\Model\AbstractRefundModel`
  - subscription: `Miracode\StripeBundle\Model\AbstractSubscriptionModel`
  
