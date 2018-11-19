@@ -72,6 +72,14 @@ miracode_stripe:
     resource: '@MiracodeStripeBundle/Resources/config/routing.xml'
 ```
 
+To implement webhook security add the Stripe generated signing secret key to the configration
+
+``` yaml
+# app/config/config.yml (or config/packages/miracode_stripe.yaml for Symfony >=3.4)
+miracode_stripe:
+    webhook_secret: '%webhook_secret_key'
+```
+
 This will register route with url `/stripe/webhook`. You should add this webhook endpoint in Stripe Dashboard. Finally you will be able to listen all Stripe events.
 
 For example for stripe event `charge.succeeded` webhook controller will dispatch event `stripe.charge.succeeded`.
