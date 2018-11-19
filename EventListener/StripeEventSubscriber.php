@@ -46,6 +46,7 @@ class StripeEventSubscriber implements EventSubscriberInterface
             StripeEvent::CUSTOMER_SUBSCRIPTION_UPDATED => 'onStripeEvent',
             StripeEvent::CUSTOMER_SUBSCRIPTION_TRAIL_WILL_END => 'onStripeEvent',
             StripeEvent::INVOICE_CREATED => 'onStripeEvent',
+            StripeEvent::INVOICE_FINALIZED => 'onStripeEvent',
             StripeEvent::INVOICE_PAYMENT_FAILED => 'onStripeEvent',
             StripeEvent::INVOICE_PAYMENT_SUCCEEDED => 'onStripeEvent',
             StripeEvent::INVOICE_SENT => 'onStripeEvent',
@@ -70,6 +71,7 @@ class StripeEventSubscriber implements EventSubscriberInterface
     public function onStripeEvent(StripeEvent $event)
     {
         $object = $event->getDataObject();
+
         if ($this->modelManager->support($object)) {
             $this->modelManager->save($object, true);
         }
