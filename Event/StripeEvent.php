@@ -31,6 +31,7 @@ class StripeEvent extends Event
     const CUSTOMER_SUBSCRIPTION_UPDATED = 'stripe.customer.subscription.updated';
     const CUSTOMER_SUBSCRIPTION_TRAIL_WILL_END = 'stripe.customer.subscription.trial_will_end';
     const INVOICE_CREATED = 'stripe.invoice.created';
+    const INVOICE_FINALIZED = 'stripe.invoice.finalized';
     const INVOICE_PAYMENT_FAILED = 'stripe.invoice.payment_failed';
     const INVOICE_PAYMENT_SUCCEEDED = 'stripe.invoice.payment_succeeded';
     const INVOICE_SENT = 'stripe.invoice.sent';
