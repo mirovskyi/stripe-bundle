@@ -53,11 +53,7 @@ class MiracodeStripeExtension extends Extension
                 );
             }
             if ($this->configureDatabase($config['database'], $container)) {
-
-                // If the bundle event listener is to be used.
-                if($config['use_bundle_subscriber'] === true) {
-                    $loader->load('listener.xml');
-                }
+                $loader->load('listener.xml');
             }
         }
     }
