@@ -63,13 +63,6 @@ abstract class AbstractPlanModel extends StripeModel
     protected $name;
 
     /**
-     * @StripeObjectParam(name="nickname")
-     *
-     * @var string
-     */
-    protected $nickname;
-
-    /**
      * @StripeObjectParam(name="statement_descriptor")
      *
      * @var string
@@ -82,13 +75,6 @@ abstract class AbstractPlanModel extends StripeModel
      * @var int
      */
     protected $trialPeriodDays;
-
-    /**
-     * @StripeObjectParam
-     *
-     * @var bool
-     */
-    protected $active;
 
     /**
      * @return int
@@ -289,49 +275,4 @@ abstract class AbstractPlanModel extends StripeModel
 
         return $this;
     }
-
-    /**
-     * @return string
-     */
-    public function getNickname(): ?string
-    {
-        return $this->nickname;
-    }
-
-    /**
-     * Set Nickname.
-     *
-     * @param string $nickname
-     *
-     * @return AbstractPlanModel
-     */
-    public function setNickname(string $nickname): AbstractPlanModel
-    {
-        $this->nickname = $nickname;
-
-        return $this;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isActive(): bool
-    {
-        return $this->active;
-    }
-
-    /**
-     * Set Active.
-     *
-     * @param bool $active
-     *
-     * @return AbstractPlanModel
-     */
-    public function setActive(bool $active): AbstractPlanModel
-    {
-        $this->active = $active;
-
-        return $this;
-    }
-
 }
