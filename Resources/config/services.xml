@@ -9,7 +9,7 @@
                  class="Miracode\StripeBundle\Transformer\AnnotationTransformer">
         </service>
         <service id="Miracode\StripeBundle\Stripe\StripeClient">
-            <argument type="string" id="miracode_stripe.secret_key" />
+            <argument>%miracode_stripe.secret_key%</argument>
         </service>
     </services>
 

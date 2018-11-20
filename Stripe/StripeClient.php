@@ -14,7 +14,9 @@ use Stripe\Stripe,
     Stripe\Customer,
     Stripe\Coupon,
     Stripe\Plan,
+    Stripe\Product,
     Stripe\Subscription,
+    Stripe\SubscriptionItem,
     Stripe\Refund;
 
 /**
@@ -95,11 +97,25 @@ class StripeClient extends Stripe
      *
      * @param string $customerId: The customer ID
      *
-     * @return Customer
+     * @return Subscription
      */
     public function retrieveSubscription($subscriptionId)
     {
         return Subscription::retrieve($subscriptionId);
+    }
+
+    /**
+     * Retrieve a SubscriptionItem instance by its ID
+     *
+     * @throws HttpException:
+     *     - If the customerId is invalid
+     *
+     * @param $subscriptionItemId
+     * @return SubscriptionItem
+     */
+    public function retrieveSubscriptionItem($subscriptionItemId)
+    {
+        return SubscriptionItem::retrieve($subscriptionItemId);
     }
 
     /**
@@ -178,7 +194,58 @@ class StripeClient extends Stripe
             'plan'          => $planId
         ];
 
-        if ($parameters && is_array($parameters)) {
+        if (is_array($parameters) && !empty($parameters)) {
+            $data = array_merge($parameters, $data);
+        }
+
+        return Subscription::create($data);
+    }
+
+    /**
+     * Associate an existing Customer object to an existing Plan.
+     *
+     * @throws HttpException:
+     *      - If the customerId is invalid (the customer does not exists...)
+     *      - If the planId is invalid (the plan does not exists...)
+     *
+     * @see https://stripe.com/docs/api#create_subscription
+     *
+     * @param string $customerId: The customer ID as defined in your Stripe dashboard
+     * @param array $items: An Array of Plan items.
+     * @param array $parameters: Optional additional parameters, the complete list is available here: https://stripe.com/docs/api#create_subscription
+     *
+     * @return Subscription
+     */
+    public function subscribeExistingCustomerToMultiplePlans($customerId, $items = [], $parameters = [])
+    {
+        $data = [
+            'customer'      => $customerId,
+            'items'          => $items
+        ];
+
+        if (is_array($parameters) && !empty($parameters)) {
+            $data = array_merge($parameters, $data);
+        }
+
+        return Subscription::create($data);
+    }
+
+    /**
+     * @param       $subscriptionId
+     * @param       $planId
+     * @param       $quantity
+     * @param array $parameters
+     * @return SubscriptionItem
+     */
+    public function createSubscriptionItem($subscriptionId, $planId, $quantity, $parameters = [])
+    {
+        $data = [
+            "subscription" => $subscriptionId,
+            "plan" => $planId,
+            "quantity" => $quantity,
+        ];
+
+        if (is_array($parameters) && !empty($parameters)) {
             $data = array_merge($parameters, $data);
         }
 
@@ -282,7 +349,7 @@ class StripeClient extends Stripe
             'email' => $email
         ];
 
-        if ($parameters && is_array($parameters)) {
+        if (is_array($parameters) && !empty($parameters)) {
             $data = array_merge($parameters, $data);
         }
 
@@ -370,5 +437,82 @@ class StripeClient extends Stripe
         }
 
         return Refund::create($refundOptions, $connectedAccountOptions);
+    }
+
+    /**
+     * @param string $name Product Name
+     * @param string $type 'service' or 'goods'
+     * @param array $parameters Array of additional parameters to pass to the constructor
+     * @return Product
+     */
+    public function createProduct($name, $type, $parameters =[] )
+    {
+        $data = [
+            'name' => $name,
+            'type' => $type,
+        ];
+
+        if (is_array($parameters) && !empty($parameters)) {
+            $data = array_merge($parameters, $data);
+        }
+
+        return Product::create($data);
+    }
+
+    /**
+     * @param string $productId
+     * @param string $interval
+     * @param null  $currency Currency to billin , defaults to 'eur'
+     * @param array $parameters
+     * @return Plan
+     */
+    public function createPlan($productId, $interval, $currency = null, $parameters = [] )
+    {
+
+        if($currency === null){
+            $currency = 'eur';
+        }
+
+        $data = [
+            'product' => $productId,
+            'interval' => $interval,
+            'currency' =>$currency,
+        ];
+
+        if (is_array($parameters) && !empty($parameters)) {
+            $data = array_merge($parameters, $data);
+        }
+
+        return Plan::create($data);
+
+    }
+
+    /**
+     * @param string $id
+     * @param string $duration
+     * @param bool  $isPercentage True = percentage_type deduction, false = amount_type
+     * @param int|float $discount The percentage discount, or amount discount
+     * @param array $parameters Additional parameters to pass to the constructor
+     * @return Coupon
+     */
+    public function createCoupon($id, $duration, $isPercentage = true, $discount, $parameters = [])
+    {
+
+        $data = [
+            "id" => $id,
+            "duration" => $duration,
+        ];
+
+        if($isPercentage){
+            $data['percent_off'] = $discount;
+        } else {
+            $data['amount_off'] = $discount;
+        }
+
+        if (is_array($parameters) && !empty($parameters)) {
+            $data = array_merge($parameters, $data);
+        }
+
+        return Coupon::create($data);
     }
 }
