@@ -246,8 +246,6 @@ class StripeClient extends Stripe
             $data = array_merge($parameters, $data);
         }
 
-        dump($data);
-
         return Subscription::create($data);
     }
 
