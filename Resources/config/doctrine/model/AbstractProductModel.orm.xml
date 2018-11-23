@@ -19,10 +19,8 @@
         <field name="statementDescriptor" column="statement_descriptor" type="string" nullable="true" />
         <field name="type" column="type" type="string" />
         <field name="updated" column="updated" type="integer" />
-        <field name="url" column="url" type="string" />
-        <unique-constraints>
-            <unique-constraint columns="stripe_id" name="stripe_id_idx" />
-        </unique-constraints>
+        <id name="url" column="url" type="string" />
+
     </mapped-superclass>
 
 </doctrine-mapping>

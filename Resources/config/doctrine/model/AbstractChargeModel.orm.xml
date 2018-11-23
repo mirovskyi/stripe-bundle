@@ -29,11 +29,8 @@
         <field name="source" column="source" type="string" nullable="true" />
         <field name="statementDescriptor" column="statement_descriptor" type="string" nullable="true" />
         <field name="status" column="status" type="string" />
-        <field name="stripeId" column="stripe_id" type="string" />
+        <id name="id" column="id" type="string" length="180" />
 
-        <unique-constraints>
-            <unique-constraint columns="stripe_id" name="stripe_id_idx" />
-        </unique-constraints>
     </mapped-superclass>
 
 </doctrine-mapping>

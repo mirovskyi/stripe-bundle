@@ -9,6 +9,7 @@
 
 namespace Miracode\StripeBundle\Stripe;
 
+use Stripe\Card;
 use Stripe\Stripe,
     Stripe\Charge,
     Stripe\Customer,
@@ -135,6 +136,24 @@ class StripeClient extends Stripe
         return Charge::retrieve($chargeId);
     }
 
+
+    /**
+     * Retrieve a Charge instance by its ID
+     *
+     * @throws HttpException:
+     *     - If the chargeId is invalid
+     *
+     * @see https://stripe.com/docs/api#charges
+     *
+     * @param string $chargeId: The charge ID
+     *
+     * @return Card
+     */
+    public function retrieveCard($cardId)
+    {
+        return Card::retrieve($cardId);
+    }
+
     /**
      * Associate a new Customer object to an existing Plan.
      *
@@ -226,6 +245,8 @@ class StripeClient extends Stripe
         if (is_array($parameters) && !empty($parameters)) {
             $data = array_merge($parameters, $data);
         }
+
+        dump($data);
 
         return Subscription::create($data);
     }

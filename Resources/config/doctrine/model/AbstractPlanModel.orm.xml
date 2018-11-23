@@ -14,13 +14,10 @@
         <field name="name" column="name" type="string" />
         <field name="nickname" column="nickname" type="string" nullable="true" />
         <field name="statementDescriptor" column="statement_descriptor" type="string" nullable="true" />
-        <field name="stripeId" column="stripe_id" type="string" />
         <field name="trialPeriodDays" column="trial_period_days" type="integer" nullable="true" />
         <field name="active" column="active" type="boolean" />
+        <id name="id" column="id" type="string" length="180" />
 
-        <unique-constraints>
-            <unique-constraint columns="stripe_id" name="stripe_id_idx" />
-        </unique-constraints>
     </mapped-superclass>
 
 </doctrine-mapping>

@@ -308,6 +308,6 @@ abstract class AbstractCustomerModel extends StripeModel
      */
     public function retrieveStripeObject()
     {
-        return \Stripe\Customer::retrieve($this->getStripeId());
+        return \Stripe\Customer::retrieve($this->getId());
     }
 }

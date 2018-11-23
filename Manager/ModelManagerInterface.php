@@ -32,7 +32,7 @@ interface ModelManagerInterface
      * @param string $objectType
      * @return StripeModelInterface|null
      */
-    public function retrieveByStripeId($id, $objectType);
+    public function retrieveById($id, $objectType);
 
     /**
      * Save stripe object in database

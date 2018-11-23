@@ -6,6 +6,7 @@ use Miracode\StripeBundle\Annotation\StripeObjectParam;
 
 abstract class AbstractPlanModel extends StripeModel
 {
+
     /**
      * @StripeObjectParam
      *
