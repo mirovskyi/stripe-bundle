@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <mapped-superclass name="Miracode\StripeBundle\Model\AbstractProductModel">
+        <field name="object" column="object" type="string" />
+        <field name="created" column="created" type="integer" />
+        <field name="active" column="active" type="boolean" />
+        <field name="attributes" column="attributes" type="array" nullable="true" />
+        <field name="deactivateOn" column="deactivate_on" type="array" nullable="true" />
+        <field name="description" column="description" type="string" />
+        <field name="images" column="images" type="array" nullable="true" />
+        <field name="livemode" column="livemode" type="boolean" />
+        <field name="metadata" column="metadata" type="array" nullable="true" />
+        <field name="name" column="name" type="string" />
+        <field name="packageDimensions" column="package_dimensions" type="array" nullable="true" />
+        <field name="shippable" column="shippable" type="boolean" />
+        <field name="statementDescriptor" column="statement_descriptor" type="string" nullable="true" />
+        <field name="type" column="type" type="string" />
+        <field name="updated" column="updated" type="integer" />
+        <id name="url" column="url" type="string" />
+
+    </mapped-superclass>
+
+</doctrine-mapping>

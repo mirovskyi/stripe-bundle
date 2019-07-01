@@ -30,7 +30,6 @@
         <field name="receiptNumber" column="recipient_number" type="string" nullable="true" />
         <field name="startingBalance" column="starting_balance" type="integer" nullable="true" />
         <field name="statementDescriptor" column="statement_descriptor" type="string" nullable="true" />
-        <field name="stripeId" column="stripe_id" type="string" />
         <field name="subscription" column="subscription" type="string" nullable="true" />
         <field name="subscriptionProrationDate" column="subscription_proration_date" type="integer" nullable="true" />
         <field name="subtotal" column="subtotal" type="integer" nullable="true" />
@@ -38,10 +37,8 @@
         <field name="taxPercent" column="tax_percent" type="decimal" precision="6" scale="2" nullable="true" />
         <field name="total" column="total" type="integer" nullable="true" />
         <field name="webhooksDeliveredAt" column="webhooks_delivered_at" type="integer" nullable="true" />
+        <id name="id" column="id" type="string" length="180" />
 
-        <unique-constraints>
-            <unique-constraint columns="stripe_id" name="stripe_id_idx" />
-        </unique-constraints>
     </mapped-superclass>
 
 </doctrine-mapping>

@@ -11,26 +11,26 @@ class StripeModel implements StripeModelInterface
      *
      * @var string
      */
-    protected $stripeId;
+    protected $id;
 
     /**
      * Retrieve stripe object ID
      *
      * @return string
      */
-    public function getStripeId()
+    public function getId()
     {
-        return $this->stripeId;
+        return $this->id;
     }
 
     /**
-     * @param string $stripeId
+     * @param string $id
      *
      * @return $this
      */
-    public function setStripeId($stripeId)
+    public function setId($id)
     {
-        $this->stripeId = $stripeId;
+        $this->id = $id;
 
         return $this;
     }

@@ -35,6 +35,11 @@ class MiracodeStripeExtension extends Extension
             $config['secret_key']
         );
 
+        $container->setParameter(
+            'miracode_stripe.webhook_secret',
+            $config['webhook_secret']
+        );
+
         if (!empty($config['database']) && !empty($config['database']['model'])) {
             if (!empty($config['database']['model_transformer'])) {
                 $container->setAlias(
@@ -48,7 +53,11 @@ class MiracodeStripeExtension extends Extension
                 );
             }
             if ($this->configureDatabase($config['database'], $container)) {
-                $loader->load('listener.xml');
+
+                // If the bundle event listener is to be used.
+                if($config['use_bundle_subscriber'] === true) {
+                    $loader->load('listener.xml');
+                }
             }
         }
     }

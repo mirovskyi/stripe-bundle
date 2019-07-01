@@ -6,6 +6,7 @@ use Miracode\StripeBundle\Annotation\StripeObjectParam;
 
 abstract class AbstractSubscriptionModel extends StripeModel
 {
+
     /**
      * @StripeObjectParam(name="application_fee_percent")
      *

@@ -4,6 +4,8 @@ namespace Miracode\StripeBundle\Manager\Doctrine;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Miracode\StripeBundle\Manager\ModelManagerInterface;
+use Miracode\StripeBundle\Model\AbstractCustomerModel;
+use Miracode\StripeBundle\Model\AbstractProductModel;
 use Miracode\StripeBundle\Model\SafeDeleteModelInterface;
 use Miracode\StripeBundle\Model\StripeModelInterface;
 use Miracode\StripeBundle\StripeException;
@@ -68,7 +70,7 @@ class DoctrineORMModelManager implements ModelManagerInterface
         $modelClass = $this->modelClass($object);
 
         return $this->objectManager->getRepository($modelClass)->findOneBy([
-            'stripeId' => $object->id
+            'id' => $object->id
         ]);
     }
 
@@ -79,7 +81,7 @@ class DoctrineORMModelManager implements ModelManagerInterface
      * @param string $objectType
      * @return StripeModelInterface|null
      */
-    public function retrieveByStripeId($id, $objectType)
+    public function retrieveById($id, $objectType)
     {
         $stripeObject = new StripeObject($id);
         $stripeObject->object = $objectType;
@@ -201,8 +203,25 @@ class DoctrineORMModelManager implements ModelManagerInterface
      */
     protected function createModel(StripeObject $object)
     {
-        $className = $this->modelClass($object);
 
-        return new $className();
+        $className = $this->modelClass($object);
+        $class = new $className();
+
+        if($object->id){
+            $class->setId($object->id);
+        }
+
+//        // If the object has a customer then map.
+//        if($object->customer){
+//            $class->setCustomer($this->objectManager->find(AbstractCustomerModel::class, $object->customer));
+//        }
+//
+//        // If the object has a has a product then map.
+//        if($object->product){
+//            $class->setCustomer($this->objectManager->find(AbstractProductModel::class, $object->product));
+//        }
+
+        return $class;
+
     }
 }
