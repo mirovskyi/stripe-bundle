@@ -50,10 +50,10 @@ class AnnotationTransformer implements TransformerInterface
                         $value->object == StripeObjectType::COLLECTION
                     ) {
                         $value = array_map(function(StripeObject $obj) {
-                            return $obj->__toArray(true);
+                            return $obj->toArray(true);
                         }, $value->data);
                     } else {
-                        $value = $value->__toArray(true);
+                        $value = $value->toArray(true);
                     }
                 }
             }
