@@ -36,7 +36,7 @@ abstract class AbstractCustomerModel extends StripeModel
 
     /**
      * @StripeObjectParam(name="default_source")
-     *
+     * @deprecated
      * @var string
      */
     protected $defaultSource;

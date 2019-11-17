@@ -35,16 +35,18 @@ class StripeEventSubscriber implements EventSubscriberInterface
             StripeEvent::CHARGE_REFUNDED => 'onStripeChargeEvent',
             StripeEvent::CHARGE_SUCCEEDED => 'onStripeChargeEvent',
             StripeEvent::CHARGE_UPDATED => 'onStripeChargeEvent',
-
             StripeEvent::COUPON_CREATED => 'onStripeEvent',
             StripeEvent::COUPON_UPDATED => 'onStripeEvent',
             StripeEvent::CUSTOMER_CREATED => 'onStripeEvent',
             StripeEvent::CUSTOMER_UPDATED => 'onStripeEvent',
+            StripeEvent::CUSTOMER_TAX_ID_CREATED => 'onStripeEvent',
+            StripeEvent::CUSTOMER_TAX_ID_UPDATED => 'onStripeEvent',
             StripeEvent::CUSTOMER_SOURCE_CREATED => 'onStripeEvent',
             StripeEvent::CUSTOMER_SOURCE_UPDATED => 'onStripeEvent',
             StripeEvent::CUSTOMER_SUBSCRIPTION_CREATED => 'onStripeEvent',
             StripeEvent::CUSTOMER_SUBSCRIPTION_UPDATED => 'onStripeEvent',
-            StripeEvent::CUSTOMER_SUBSCRIPTION_TRAIL_WILL_END => 'onStripeEvent',
+            StripeEvent::CUSTOMER_SUBSCRIPTION_DELETED => 'onStripeEvent',
+            StripeEvent::CUSTOMER_SUBSCRIPTION_TRIAL_WILL_END => 'onStripeEvent',
             StripeEvent::INVOICE_CREATED => 'onStripeEvent',
             StripeEvent::INVOICE_FINALIZED => 'onStripeEvent',
             StripeEvent::INVOICE_PAYMENT_FAILED => 'onStripeEvent',
@@ -56,9 +58,10 @@ class StripeEventSubscriber implements EventSubscriberInterface
             StripeEvent::SOURCE_CANCELED => 'onStripeEvent',
             StripeEvent::SOURCE_CHARGEABLE => 'onStripeEvent',
             StripeEvent::SOURCE_FAILED => 'onStripeEvent',
-            StripeEvent::CUSTOMER_SUBSCRIPTION_DELETED => 'onStripeEvent',
 
             StripeEvent::COUPON_DELETED => 'onStripeDeleteEvent',
+            StripeEvent::TAX_RATE_CREATED => 'onStripeEvent',
+            StripeEvent::TAX_RATE_UPDATED => 'onStripeEvent',
             StripeEvent::CUSTOMER_DELETED => 'onStripeDeleteEvent',
             StripeEvent::CUSTOMER_SOURCE_DELETED => 'onStripeDeleteEvent',
             StripeEvent::PLAN_DELETED => 'onStripeDeleteEvent',
@@ -76,6 +79,7 @@ class StripeEventSubscriber implements EventSubscriberInterface
             $this->modelManager->save($object, true);
         }
     }
+
 
     /**
      * @param StripeEvent $event

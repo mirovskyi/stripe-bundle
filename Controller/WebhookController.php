@@ -6,6 +6,7 @@ use Miracode\StripeBundle\Event\StripeEvent;
 use Miracode\StripeBundle\Stripe\StripeObjectType;
 use Miracode\StripeBundle\StripeException;
 use Stripe\Error\SignatureVerification;
+use Stripe\Exception\SignatureVerificationException;
 use Stripe\Webhook;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -40,24 +41,27 @@ class WebhookController extends Controller
 
         // Secure webhook with event signature: https://stripe.com/docs/webhooks/signatures
         $webhookSecret = $this->getParameter('miracode_stripe.webhook_secret');
-//        if($webhookSecret !== null) {
-//            $sigHeader = $request->headers->get('Stripe-Signature');
-//            try {
-//                $event = Webhook::constructEvent(
-//                    $request->getContent(), $sigHeader, $webhookSecret
-//                );
-//            } catch(\UnexpectedValueException $e) {
-//                // Invalid payload
-//                throw new StripeException(
-//                    sprintf('Invalid event payload', $requestData->id)
-//                );
-//            } catch(SignatureVerification $e) {
-//                // Invalid signature
-//                throw new StripeException(
-//                    sprintf('Invalid event signature', $requestData->id)
-//                );
-//            }
-//        }
+
+        $verifySignature = $this->getParameter('verify_stripe_signature');
+
+        if($verifySignature === true && $webhookSecret !== null) {
+            $sigHeader = $request->headers->get('Stripe-Signature');
+            try {
+                $event = Webhook::constructEvent(
+                    $request->getContent(), $sigHeader, $webhookSecret
+                );
+            } catch(\UnexpectedValueException $e) {
+                // Invalid payload
+                throw new StripeException(
+                    sprintf('Invalid event payload', $requestData->id)
+                );
+            } catch(SignatureVerificationException $e) {
+                // Invalid signature
+                throw new StripeException(
+                    sprintf('Invalid event signature', $requestData->id)
+                );
+            }
+        }
 
         $stripeEventApi = new StripeEventApi();
 

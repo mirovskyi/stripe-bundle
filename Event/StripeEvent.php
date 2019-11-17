@@ -29,10 +29,14 @@ class StripeEvent extends Event
     const CUSTOMER_SUBSCRIPTION_CREATED = 'stripe.customer.subscription.created';
     const CUSTOMER_SUBSCRIPTION_DELETED = 'stripe.customer.subscription.deleted';
     const CUSTOMER_SUBSCRIPTION_UPDATED = 'stripe.customer.subscription.updated';
-    const CUSTOMER_SUBSCRIPTION_TRAIL_WILL_END = 'stripe.customer.subscription.trial_will_end';
+    const CUSTOMER_SUBSCRIPTION_TRIAL_WILL_END = 'stripe.customer.subscription.trial_will_end';
+    const CUSTOMER_TAX_ID_CREATED = 'stripe.customer.tax_id.created';
+    const CUSTOMER_TAX_ID_UPDATED = 'stripe.customer.tax_id.updated';
     const INVOICE_CREATED = 'stripe.invoice.created';
     const INVOICE_DELETED = 'stripe.invoice.deleted';
     const INVOICE_FINALIZED = 'stripe.invoice.finalized';
+    const INVOICE_ITEM_UPDATED = 'stripe.invoiceitem.updated';
+    const INVOICE_PAYMENT_ACTION_REQUIRED = 'stripe.invoice.payment_action_required';
     const INVOICE_PAYMENT_FAILED = 'stripe.invoice.payment_failed';
     const INVOICE_PAYMENT_SUCCEEDED = 'stripe.invoice.payment_succeeded';
     const INVOICE_SENT = 'stripe.invoice.sent';
@@ -41,9 +45,12 @@ class StripeEvent extends Event
     const PLAN_CREATED = 'stripe.plan.created';
     const PLAN_DELETED = 'stripe.plan.deleted';
     const PLAN_UPDATED = 'stripe.plan.updated';
+    const PAYMENT_INTENT_SUCCEEDED = 'stripe.payment_intent.succeeded';
     const SOURCE_CANCELED = 'stripe.source.canceled';
     const SOURCE_CHARGEABLE = 'stripe.source.chargeable';
     const SOURCE_FAILED = 'stripe.source.failed';
+    const TAX_RATE_CREATED = 'stripe.tax_rate.created';
+    const TAX_RATE_UPDATED = 'stripe.tax_rate.updated';
 
     /**
      * @var StripeObject

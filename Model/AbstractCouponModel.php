@@ -25,6 +25,13 @@ abstract class AbstractCouponModel extends StripeModel
      *
      * @var string
      */
+    protected $name;
+
+    /**
+     * @StripeObjectParam
+     *
+     * @var string
+     */
     protected $currency;
 
     /**
@@ -329,4 +336,28 @@ abstract class AbstractCouponModel extends StripeModel
 
         return $this;
     }
+
+    /**
+     * @return string|null
+     */
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set Name.
+     *
+     * @param string $name
+     *
+     * @return AbstractCouponModel
+     */
+    public function setName(string $name): AbstractCouponModel
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+
 }

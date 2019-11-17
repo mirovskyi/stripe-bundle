@@ -6,6 +6,7 @@
     <mapped-superclass name="Miracode\StripeBundle\Model\AbstractCouponModel">
         <field name="amountOff"  column="amount_off" type="integer" nullable="true" />
         <field name="created" column="created" type="integer" />
+        <field name="name" column="name" type="string" nullable="true" />
         <field name="currency" column="currency" type="string" nullable="true" />
         <field name="duration" column="duration" type="string" />
         <field name="durationInMonths" column="duration_in_months" type="integer" nullable="true" />

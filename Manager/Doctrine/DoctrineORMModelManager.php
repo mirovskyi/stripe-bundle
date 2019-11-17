@@ -10,6 +10,7 @@ use Miracode\StripeBundle\Model\SafeDeleteModelInterface;
 use Miracode\StripeBundle\Model\StripeModelInterface;
 use Miracode\StripeBundle\StripeException;
 use Miracode\StripeBundle\Transformer\TransformerInterface;
+use Stripe\Customer;
 use Stripe\StripeObject;
 
 class DoctrineORMModelManager implements ModelManagerInterface
@@ -212,14 +213,16 @@ class DoctrineORMModelManager implements ModelManagerInterface
         }
 
 //        // If the object has a customer then map.
-//        if($object->customer){
-//            $class->setCustomer($this->objectManager->find(AbstractCustomerModel::class, $object->customer));
-//        }
+        if($object->customer){
+            // Get local customer;
+            $customer = $this->objectManager->find($this->modelClasses['customer'], $object->customer);
+            $class->setCustomer($customer);
+        }
 //
 //        // If the object has a has a product then map.
-//        if($object->product){
-//            $class->setCustomer($this->objectManager->find(AbstractProductModel::class, $object->product));
-//        }
+        if($object->product){
+            $class->setCustomer($this->objectManager->find($this->modelClasses['product'], $object->product));
+        }
 
         return $class;
 

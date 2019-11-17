@@ -212,6 +212,13 @@ abstract class AbstractInvoiceModel extends StripeModel
     /**
      * @StripeObjectParam
      *
+     * @var array|null
+     */
+    protected $discount;
+
+    /**
+     * @StripeObjectParam
+     *
      * @var int
      */
     protected $tax;
@@ -236,6 +243,20 @@ abstract class AbstractInvoiceModel extends StripeModel
      * @var int
      */
     protected $webhooksDeliveredAt;
+
+    /**
+     * @StripeObjectParam(name="hosted_invoice_url")
+     *
+     * @var string
+     */
+    protected $hostedInvoiceUrl;
+
+    /**
+     * @StripeObjectParam(name="invoice_pdf")
+     *
+     * @var string
+     */
+    protected $invoicePdf;
 
     /**
      * @return int
@@ -896,4 +917,72 @@ abstract class AbstractInvoiceModel extends StripeModel
 
         return $this;
     }
+
+    /**
+     * @return string
+     */
+    public function getHostedInvoiceUrl(): string
+    {
+        return $this->hostedInvoiceUrl;
+    }
+
+    /**
+     * Set HostedInvoiceUrl.
+     *
+     * @param string $hostedInvoiceUrl
+     *
+     * @return AbstractInvoiceModel
+     */
+    public function setHostedInvoiceUrl(string $hostedInvoiceUrl): AbstractInvoiceModel
+    {
+        $this->hostedInvoiceUrl = $hostedInvoiceUrl;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getInvoicePdf(): string
+    {
+        return $this->invoicePdf;
+    }
+
+    /**
+     * Set InvoicePdf.
+     *
+     * @param string $invoicePdf
+     *
+     * @return AbstractInvoiceModel
+     */
+    public function setInvoicePdf(string $invoicePdf): AbstractInvoiceModel
+    {
+        $this->invoicePdf = $invoicePdf;
+
+        return $this;
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getDiscount(): ?array
+    {
+        return $this->discount;
+    }
+
+    /**
+     * Set Discount.
+     *
+     * @param array|null $discount
+     *
+     * @return AbstractInvoiceModel
+     */
+    public function setDiscount(?array $discount): AbstractInvoiceModel
+    {
+        $this->discount = $discount;
+
+        return $this;
+    }
+
+
 }
