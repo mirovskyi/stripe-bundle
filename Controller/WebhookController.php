@@ -26,6 +26,7 @@ class WebhookController extends Controller
     {
 
         $requestData = json_decode($request->getContent());
+
         if (!isset($requestData->id) || !isset($requestData->object)) {
             throw new BadRequestHttpException('Invalid webhook request data');
         }

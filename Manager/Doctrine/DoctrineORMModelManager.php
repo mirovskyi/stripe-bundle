@@ -212,18 +212,6 @@ class DoctrineORMModelManager implements ModelManagerInterface
             $class->setId($object->id);
         }
 
-//        // If the object has a customer then map.
-        if($object->customer){
-            // Get local customer;
-            $customer = $this->objectManager->find($this->modelClasses['customer'], $object->customer);
-            $class->setCustomer($customer);
-        }
-//
-//        // If the object has a has a product then map.
-        if($object->product){
-            $class->setCustomer($this->objectManager->find($this->modelClasses['product'], $object->product));
-        }
-
         return $class;
 
     }
