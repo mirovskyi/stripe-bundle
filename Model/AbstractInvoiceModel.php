@@ -254,7 +254,7 @@ abstract class AbstractInvoiceModel extends StripeModel
     /**
      * @StripeObjectParam(name="invoice_pdf")
      *
-     * @var string
+     * @var string|null
      */
     protected $invoicePdf;
 
@@ -941,9 +941,9 @@ abstract class AbstractInvoiceModel extends StripeModel
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getInvoicePdf(): string
+    public function getInvoicePdf()
     {
         return $this->invoicePdf;
     }
@@ -951,11 +951,11 @@ abstract class AbstractInvoiceModel extends StripeModel
     /**
      * Set InvoicePdf.
      *
-     * @param string $invoicePdf
+     * @param string|null $invoicePdf
      *
      * @return AbstractInvoiceModel
      */
-    public function setInvoicePdf(string $invoicePdf): AbstractInvoiceModel
+    public function setInvoicePdf($invoicePdf): AbstractInvoiceModel
     {
         $this->invoicePdf = $invoicePdf;
 
