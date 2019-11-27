@@ -42,6 +42,7 @@ class StripeEvent extends Event
     const INVOICE_SENT = 'stripe.invoice.sent';
     const INVOICE_UPCOMING = 'stripe.invoice.upcoming';
     const INVOICE_UPDATED = 'stripe.invoice.updated';
+    const INVOICE_VOIDED = 'stripe.invoice.voided';
     const PLAN_CREATED = 'stripe.plan.created';
     const PLAN_DELETED = 'stripe.plan.deleted';
     const PLAN_UPDATED = 'stripe.plan.updated';
