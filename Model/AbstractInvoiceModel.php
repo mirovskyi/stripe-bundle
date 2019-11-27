@@ -247,7 +247,7 @@ abstract class AbstractInvoiceModel extends StripeModel
     /**
      * @StripeObjectParam(name="hosted_invoice_url")
      *
-     * @var string
+     * @var string|null
      */
     protected $hostedInvoiceUrl;
 
@@ -919,9 +919,9 @@ abstract class AbstractInvoiceModel extends StripeModel
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getHostedInvoiceUrl(): string
+    public function getHostedInvoiceUrl()
     {
         return $this->hostedInvoiceUrl;
     }
@@ -929,11 +929,11 @@ abstract class AbstractInvoiceModel extends StripeModel
     /**
      * Set HostedInvoiceUrl.
      *
-     * @param string $hostedInvoiceUrl
+     * @param string|uull $hostedInvoiceUrl
      *
      * @return AbstractInvoiceModel
      */
-    public function setHostedInvoiceUrl(string $hostedInvoiceUrl): AbstractInvoiceModel
+    public function setHostedInvoiceUrl($hostedInvoiceUrl): AbstractInvoiceModel
     {
         $this->hostedInvoiceUrl = $hostedInvoiceUrl;
 
