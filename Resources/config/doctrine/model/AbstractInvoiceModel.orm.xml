@@ -5,6 +5,7 @@
 
     <mapped-superclass name="Miracode\StripeBundle\Model\AbstractInvoiceModel">
         <field name="amountDue" column="amount_due" type="integer" nullable="true" />
+        <field name="amountPaid" column="amount_paid" type="integer" nullable="true" />
         <field name="applicationFee" column="application_fee" type="integer" nullable="true" />
         <field name="attemptCount" column="attempt_count" type="integer" nullable="true" />
         <field name="attempted" column="attempted" type="boolean" nullable="true" />

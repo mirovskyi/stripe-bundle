@@ -6,6 +6,14 @@ use Miracode\StripeBundle\Annotation\StripeObjectParam;
 
 abstract class AbstractInvoiceModel extends StripeModel
 {
+
+    /**
+     * @StripeObjectParam(name="amount_paid")
+     *
+     * @var int
+     */
+    protected $amountPaid;
+
     /**
      * @StripeObjectParam(name="amount_due")
      *
@@ -257,6 +265,26 @@ abstract class AbstractInvoiceModel extends StripeModel
      * @var string|null
      */
     protected $invoicePdf;
+
+    /**
+     * @return int
+     */
+    public function getAmountPaid()
+    {
+        return $this->amountPaid;
+    }
+
+    /**
+     * @param int $amountPaid
+     *
+     * @return $this
+     */
+    public function setAmountPaid($amountPaid)
+    {
+        $this->amountPaid = $amountPaid;
+
+        return $this;
+    }
 
     /**
      * @return int
