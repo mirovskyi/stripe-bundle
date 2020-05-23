@@ -17,8 +17,14 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('miracode_stripe');
+        $treeBuilder = new TreeBuilder('miracode_stripe');
+        
+        if (method_exists($treeBuilder, 'getRootNode')) {
+            $rootNode = $treeBuilder->getRootNode();
+        } else {
+            // for symfony/config 4.1 and older
+            $rootNode = $treeBuilder->root('miracode_stripe');
+        }
 
         $supportedDrivers = array('orm', /** coming soon) */);
 
