@@ -5,7 +5,7 @@ namespace Miracode\StripeBundle\EventListener;
 use Miracode\StripeBundle\Event\StripeEvent;
 use Miracode\StripeBundle\Manager\ModelManagerInterface;
 use Stripe\StripeObject;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Contracts\EventDispatcher\EventSubscriberInterface;
 
 class StripeEventSubscriber implements EventSubscriberInterface
 {
