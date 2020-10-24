@@ -9,6 +9,8 @@ This bundle  tested on Symfony versions 2.7, 2.8, 3.1, 3.3, 3.4, 4.0. Compatible
 
 [![Build Status](https://travis-ci.org/mirovskyi/stripe-bundle.svg?branch=1.0)](https://travis-ci.org/mirovskyi/stripe-bundle)
 
+Currently using this bundle for payments at (https://www.parolla.ie)](https://www.parolla.ie) and (https://tools.parolla.ie)](https://tools.parolla.ie)
+
 
 Installation
 ------------
