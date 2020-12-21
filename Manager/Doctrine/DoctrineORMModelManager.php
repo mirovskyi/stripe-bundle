@@ -3,6 +3,7 @@
 namespace Miracode\StripeBundle\Manager\Doctrine;
 
 use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Miracode\StripeBundle\Manager\ModelManagerInterface;
 use Miracode\StripeBundle\Model\AbstractCustomerModel;
 use Miracode\StripeBundle\Model\AbstractProductModel;
@@ -32,12 +33,12 @@ class DoctrineORMModelManager implements ModelManagerInterface
 
     /**
      * DoctrineORMModelManager constructor.
-     * @param ObjectManager $objectManager
+     * @param EntityManagerInterface $objectManager
      * @param TransformerInterface $transformer
      * @param array $modelClasses
      */
     public function __construct(
-        ObjectManager $objectManager,
+        EntityManagerInterface $objectManager,
         TransformerInterface $transformer,
         $modelClasses
     ) {

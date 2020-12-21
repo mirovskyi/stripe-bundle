@@ -8,13 +8,13 @@ use Miracode\StripeBundle\StripeException;
 use Stripe\Error\SignatureVerification;
 use Stripe\Exception\SignatureVerificationException;
 use Stripe\Webhook;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Stripe\Event as StripeEventApi;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
-class WebhookController extends Controller
+class WebhookController extends AbstractController
 {
     /**
      * @param Request $request
