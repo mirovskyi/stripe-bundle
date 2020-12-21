@@ -99,7 +99,7 @@ Event Subscriber example:
 namespace App\EventListener;
 
 use Miracode\StripeBundle\Event\StripeEvent;
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Contracts\EventDispatcher\EventSubscriberInterface;
 
 class StripeSubscriber implements EventSubscriberInterface
 {
@@ -137,7 +137,7 @@ namespace App\EventListener;
 
 use Miracode\StripeBundle\Event\StripeEvent;
 use Miracode\StripeBundle\EventListener\StripeEventSubscriber as MiracodeStripeEventSubscriber
-use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+use Symfony\Contracts\EventDispatcher\EventSubscriberInterface;
 
 class StripeEventSubscriber extends MiracodeStripeEventSubscriber implements EventSubscriberInterface
 {
