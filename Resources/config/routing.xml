@@ -5,6 +5,6 @@
     xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
     <route id="miracode_stripe_webhook" path="/stripe/webhook">
-        <default key="_controller">MiracodeStripeBundle:Webhook:handle</default>
+        <default key="_controller">Miracode\StripeBundle\Controller\WebhookController::handleAction</default>
     </route>
 </routes>
