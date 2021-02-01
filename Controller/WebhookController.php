@@ -9,6 +9,7 @@ use Stripe\Error\SignatureVerification;
 use Stripe\Exception\SignatureVerificationException;
 use Stripe\Webhook;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\EventDispatcher\EventDispatcher;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Stripe\Event as StripeEventApi;
@@ -16,6 +17,14 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 class WebhookController extends AbstractController
 {
+
+    private $eventDispatcher;
+
+    public function __construct(EventDispatcher $eventDispatcher)
+    {
+        $this->eventDispatcher = $eventDispatcher;
+    }
+    
     /**
      * @param Request $request
      *
@@ -73,9 +82,7 @@ class WebhookController extends AbstractController
         }
 
         $event = new StripeEvent($stripeEventObject);
-        $this
-            ->get('event_dispatcher')
-            ->dispatch('stripe.' . $stripeEventObject->type, $event);
+        $this->eventDispatcher->dispatch($event, 'stripe.' . $stripeEventObject->type);
 
         return new Response();
     }
