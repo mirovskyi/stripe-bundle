@@ -5,7 +5,8 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-       <service id="Miracode\StripeBundle\Controller\WebhookController" public="true">
+        <service id="Miracode\StripeBundle\Controller\WebhookController" public="true">
+            <argument type="service" id="event_dispatcher" />
             <call method="setContainer">
                 <argument type="service" id="Psr\Container\ContainerInterface"/>
             </call>
@@ -18,5 +19,4 @@
             <argument>%miracode_stripe.secret_key%</argument>
         </service>
     </services>
-
 </container>
