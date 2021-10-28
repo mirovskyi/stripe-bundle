@@ -1,5 +1,5 @@
 {
-    "name": "miracode/stripe-bundle",
+    "name": "herdwatch/stripe-bundle",
     "description": "Symfony bundle to integrate Stripe PHP SDK. Ability to save Stripe objects in database using Doctrine.",
     "keywords": [
         "symfony",
