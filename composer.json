@@ -4,6 +4,7 @@
     "keywords": [
         "symfony",
         "bundle",
+        "herdwatch",
         "stripe",
         "payment",
         "php",
