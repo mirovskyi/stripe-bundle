@@ -4,7 +4,7 @@ namespace Miracode\StripeBundle\Event;
 
 use Miracode\StripeBundle\StripeException;
 use Stripe\StripeObject;
-use Symfony\Component\EventDispatcher\Event;
+use Symfony\Contracts\EventDispatcher\Event;
 
 class StripeEvent extends Event
 {
