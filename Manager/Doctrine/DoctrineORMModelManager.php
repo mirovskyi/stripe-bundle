@@ -2,7 +2,7 @@
 
 namespace Miracode\StripeBundle\Manager\Doctrine;
 
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 use Miracode\StripeBundle\Manager\ModelManagerInterface;
 use Miracode\StripeBundle\Model\SafeDeleteModelInterface;
 use Miracode\StripeBundle\Model\StripeModelInterface;
