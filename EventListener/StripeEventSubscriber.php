@@ -38,6 +38,7 @@ class StripeEventSubscriber implements EventSubscriberInterface
 
             StripeEvent::COUPON_CREATED => 'onStripeEvent',
             StripeEvent::COUPON_UPDATED => 'onStripeEvent',
+
             StripeEvent::CUSTOMER_CREATED => 'onStripeEvent',
             StripeEvent::CUSTOMER_UPDATED => 'onStripeEvent',
             StripeEvent::CUSTOMER_SOURCE_CREATED => 'onStripeEvent',
@@ -45,13 +46,16 @@ class StripeEventSubscriber implements EventSubscriberInterface
             StripeEvent::CUSTOMER_SUBSCRIPTION_CREATED => 'onStripeEvent',
             StripeEvent::CUSTOMER_SUBSCRIPTION_UPDATED => 'onStripeEvent',
             StripeEvent::CUSTOMER_SUBSCRIPTION_TRAIL_WILL_END => 'onStripeEvent',
+
             StripeEvent::INVOICE_CREATED => 'onStripeEvent',
             StripeEvent::INVOICE_PAYMENT_FAILED => 'onStripeEvent',
             StripeEvent::INVOICE_PAYMENT_SUCCEEDED => 'onStripeEvent',
             StripeEvent::INVOICE_SENT => 'onStripeEvent',
             StripeEvent::INVOICE_UPDATED => 'onStripeEvent',
+
             StripeEvent::PLAN_CREATED => 'onStripeEvent',
             StripeEvent::PLAN_UPDATED => 'onStripeEvent',
+
             StripeEvent::SOURCE_CANCELED => 'onStripeEvent',
             StripeEvent::SOURCE_CHARGEABLE => 'onStripeEvent',
             StripeEvent::SOURCE_FAILED => 'onStripeEvent',
@@ -63,6 +67,12 @@ class StripeEventSubscriber implements EventSubscriberInterface
             StripeEvent::PAYMENT_INTENT_PROCESSING => 'onStripeEvent',
             StripeEvent::PAYMENT_INTENT_REQURIES_ACTION => 'onStripeEvent',
             StripeEvent::PAYMENT_INTENT_SUCCEEDED => 'onStripeEvent',
+
+            StripeEvent::SETUP_INTENT_CANCELED => 'onStripeEvent',
+            StripeEvent::SETUP_INTENT_CREATED => 'onStripeEvent',
+            StripeEvent::SETUP_INTENT_REQUIRES_ACTION => 'onStripeEvent',
+            StripeEvent::SETUP_INTENT_SETUP_FILED => 'onStripeEvent',
+            StripeEvent::SETUP_INTENT_SUCCEEDED => 'onStripeEvent',
 
             StripeEvent::PAYMENT_METHOD_ATTACHED => 'onStripeEvent',
             StripeEvent::PAYMENT_METHOD_DETACHED => 'onStripeEvent',
