@@ -3,6 +3,7 @@
 namespace Miracode\StripeBundle\Controller;
 
 use Miracode\StripeBundle\Event\StripeEvent;
+use Miracode\StripeBundle\Handler\DefaultHandlerService;
 use Miracode\StripeBundle\Stripe\StripeObjectType;
 use Miracode\StripeBundle\StripeException;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -36,9 +37,9 @@ class WebhookController extends Controller
         }
 
         $event = new StripeEvent($stripeEventObject);
-        $this
-            ->get('event_dispatcher')
-            ->dispatch('stripe.' . $stripeEventObject->type, $event);
+        /** @var DefaultHandlerService $service */
+        $service = $this->get($this->getParameter('miracode_stripe.process_service'));
+        $service->process($stripeEventObject, $event);
 
         return new Response();
     }

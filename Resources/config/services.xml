@@ -8,6 +8,11 @@
         <service id="miracode_stripe.model_transformer.annotation"
                  class="Miracode\StripeBundle\Transformer\AnnotationTransformer">
         </service>
+        <service id="miracode_stripe.default_handler"
+                 class="Miracode\StripeBundle\Handler\DefaultHandlerService"
+                 public="true">
+            <argument type="service" id="service_container" />
+        </service>
     </services>
 
 </container>

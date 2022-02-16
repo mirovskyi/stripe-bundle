@@ -39,6 +39,17 @@ class StripeEvent extends Event
     const PLAN_CREATED = 'stripe.plan.created';
     const PLAN_DELETED = 'stripe.plan.deleted';
     const PLAN_UPDATED = 'stripe.plan.updated';
+    const PAYMENT_INTENT_AMOUNT_CAPTURABLE_UPDATED = 'stripe.payment_intent.amount_capturable_updated';
+    const PAYMENT_INTENT_CANCELLED = 'stripe.payment_intent.canceled';
+    const PAYMENT_INTENT_CREATED = 'stripe.payment_intent.created';
+    const PAYMENT_INTENT_PAYMENT_FILED = 'stripe.payment_intent.payment_failed';
+    const PAYMENT_INTENT_PROCESSING = 'stripe.payment_intent.processing';
+    const PAYMENT_INTENT_REQURIES_ACTION = 'stripe.payment_intent.requires_action';
+    const PAYMENT_INTENT_SUCCEEDED = 'stripe.payment_intent.succeeded';
+    const PAYMENT_METHOD_ATTACHED = 'stripe.payment_method.attached';
+    const PAYMENT_METHOD_DETACHED = 'stripe.payment_method.detached';
+    const PAYMENT_METHOD_UPDATED = 'stripe.payment_method.updated';
+    const PAYMENT_METHOD_AUTOMATICALLY_UPDATED = 'stripe.payment_method.automatically_updated';
     const SOURCE_CANCELED = 'stripe.source.canceled';
     const SOURCE_CHARGEABLE = 'stripe.source.chargeable';
     const SOURCE_FAILED = 'stripe.source.failed';

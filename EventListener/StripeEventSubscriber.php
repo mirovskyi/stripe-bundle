@@ -55,7 +55,19 @@ class StripeEventSubscriber implements EventSubscriberInterface
             StripeEvent::SOURCE_CANCELED => 'onStripeEvent',
             StripeEvent::SOURCE_CHARGEABLE => 'onStripeEvent',
             StripeEvent::SOURCE_FAILED => 'onStripeEvent',
-            StripeEvent::CUSTOMER_SUBSCRIPTION_DELETED => 'onStripeEvent',
+
+            StripeEvent::PAYMENT_INTENT_AMOUNT_CAPTURABLE_UPDATED => 'onStripeEvent',
+            StripeEvent::PAYMENT_INTENT_CANCELLED => 'onStripeEvent',
+            StripeEvent::PAYMENT_INTENT_CREATED => 'onStripeEvent',
+            StripeEvent::PAYMENT_INTENT_PAYMENT_FILED => 'onStripeEvent',
+            StripeEvent::PAYMENT_INTENT_PROCESSING => 'onStripeEvent',
+            StripeEvent::PAYMENT_INTENT_REQURIES_ACTION => 'onStripeEvent',
+            StripeEvent::PAYMENT_INTENT_SUCCEEDED => 'onStripeEvent',
+
+            StripeEvent::PAYMENT_METHOD_ATTACHED => 'onStripeEvent',
+            StripeEvent::PAYMENT_METHOD_DETACHED => 'onStripeEvent',
+            StripeEvent::PAYMENT_METHOD_UPDATED => 'onStripeEvent',
+            StripeEvent::PAYMENT_METHOD_AUTOMATICALLY_UPDATED => 'onStripeEvent',
 
             StripeEvent::COUPON_DELETED => 'onStripeDeleteEvent',
             StripeEvent::CUSTOMER_DELETED => 'onStripeDeleteEvent',
