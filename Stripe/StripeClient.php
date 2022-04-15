@@ -514,7 +514,7 @@ class StripeClient extends Stripe
      * @param array $parameters Additional parameters to pass to the constructor
      * @return Coupon
      */
-    public function createCoupon($id, $duration, $isPercentage = true, $discount, $parameters = [])
+    public function createCoupon($id, $duration, $isPercentage, $discount, $parameters = [])
     {
 
         $data = [
