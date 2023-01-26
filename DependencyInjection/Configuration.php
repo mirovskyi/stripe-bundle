@@ -17,8 +17,8 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('miracode_stripe');
+        $treeBuilder = new TreeBuilder('miracode_stripe');
+        $rootNode = $treeBuilder->getRootNode();
 
         $supportedDrivers = array('orm', /** coming soon) */);
 

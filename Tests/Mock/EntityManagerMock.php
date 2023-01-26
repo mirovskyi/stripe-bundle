@@ -2,7 +2,7 @@
 
 namespace Miracode\StripeBundle\Tests\Mock;
 
-use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Persistence\ObjectManager;
 
 class EntityManagerMock implements ObjectManager
 {
@@ -126,7 +126,7 @@ class EntityManagerMock implements ObjectManager
      *
      * @param string $className
      *
-     * @return \Doctrine\Common\Persistence\ObjectRepository
+     * @return \Doctrine\Persistence\ObjectRepository
      */
     public function getRepository($className)
     {
@@ -141,7 +141,7 @@ class EntityManagerMock implements ObjectManager
      *
      * @param string $className
      *
-     * @return \Doctrine\Common\Persistence\Mapping\ClassMetadata
+     * @return \Doctrine\Persistence\Mapping\ClassMetadata
      */
     public function getClassMetadata($className)
     {
@@ -151,7 +151,7 @@ class EntityManagerMock implements ObjectManager
     /**
      * Gets the metadata factory used to gather the metadata of classes.
      *
-     * @return \Doctrine\Common\Persistence\Mapping\ClassMetadataFactory
+     * @return \Doctrine\Persistence\Mapping\ClassMetadataFactory
      */
     public function getMetadataFactory()
     {
