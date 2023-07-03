@@ -14,24 +14,25 @@
     "license": "MIT",
     "authors": [
         {
-            "name" : "Aleksey Mirovskyi",
+            "name": "Aleksey Mirovskyi",
             "email": "mirovskyi@gmail.com"
         }
     ],
     "require": {
-        "php"                          : ">=7.4.0",
-        "symfony/framework-bundle"     : ">=2.4",
-        "symfony/config"               : ">=2.3",
-        "stripe/stripe-php"            : ">=3.0",
-        "doctrine/common"              : ">=2.2"
+        "php": ">=7.4.0",
+        "symfony/framework-bundle": "4.4.49 || ^5.4",
+        "symfony/config": "4.4.44 || ^5.4",
+        "stripe/stripe-php": ">=9.0",
+        "doctrine/common": ">=3.0"
     },
     "require-dev": {
-        "doctrine/orm"                 : ">=2.2",
-        "symfony/yaml"                 : "^2.8 || ^3.0 || ^4.0 || ^5.0",
-        "phpunit/phpunit"              : "~4.8|~5.0"
+        "doctrine/orm": ">=2.2",
+        "phpunit/phpunit": "^9.3",
+        "symfony/test-pack": "^1.0",
+        "symfony/yaml": "4.4.45 || ^5.4"
     },
     "suggest": {
-        "doctrine/orm" : "If you want to save stripe data in database"
+        "doctrine/orm": "If you want to save stripe data in database"
     },
     "extra": {
         "branch-alias": {
@@ -49,6 +50,11 @@
     "autoload-dev": {
         "psr-4": {
             "Miracode\\StripeBundle\\Tests\\": "/Tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "ocramius/package-versions": true
         }
     }
 }
