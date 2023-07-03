@@ -1,60 +1,60 @@
 {
-  "name": "herdwatch/stripe-bundle",
-  "description": "Symfony bundle to integrate Stripe PHP SDK. Ability to save Stripe objects in database using Doctrine.",
-  "keywords": [
-    "symfony",
-    "bundle",
-    "herdwatch",
-    "stripe",
-    "payment",
-    "php",
-    "webpayment"
-  ],
-  "type": "symfony-bundle",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Aleksey Mirovskyi",
-      "email": "mirovskyi@gmail.com"
-    }
-  ],
-  "require": {
-    "php": ">=7.4.0",
-    "symfony/framework-bundle": "4.4.49 || ^5.4",
-    "symfony/config": "4.4.44 || ^5.4",
-    "stripe/stripe-php": ">=9.0",
-    "doctrine/common": ">=3.0"
-  },
-  "require-dev": {
-    "doctrine/orm": ">=2.2",
-    "phpunit/phpunit": "^9.3",
-    "symfony/test-pack": "^1.0",
-    "symfony/yaml": "4.4.45 || ^5.4"
-  },
-  "suggest": {
-    "doctrine/orm": "If you want to save stripe data in database"
-  },
-  "extra": {
-    "branch-alias": {
-      "dev-master": "1.0.x-dev"
-    }
-  },
-  "autoload": {
-    "psr-4": {
-      "Miracode\\StripeBundle\\": ""
+    "name": "herdwatch/stripe-bundle",
+    "description": "Symfony bundle to integrate Stripe PHP SDK. Ability to save Stripe objects in database using Doctrine.",
+    "keywords": [
+        "symfony",
+        "bundle",
+        "herdwatch",
+        "stripe",
+        "payment",
+        "php",
+        "webpayment"
+    ],
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aleksey Mirovskyi",
+            "email": "mirovskyi@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4.0",
+        "symfony/framework-bundle": "4.4.49 || ^5.4",
+        "symfony/config": "4.4.44 || ^5.4",
+        "stripe/stripe-php": ">=9.0",
+        "doctrine/common": ">=3.0"
     },
-    "exclude-from-classmap": [
-      "/Tests/"
-    ]
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "Miracode\\StripeBundle\\Tests\\": "/Tests/"
+    "require-dev": {
+        "doctrine/orm": ">=2.2",
+        "phpunit/phpunit": "^9.3",
+        "symfony/test-pack": "^1.0",
+        "symfony/yaml": "4.4.45 || ^5.4"
+    },
+    "suggest": {
+        "doctrine/orm": "If you want to save stripe data in database"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Miracode\\StripeBundle\\": ""
+        },
+        "exclude-from-classmap": [
+            "/Tests/"
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Miracode\\StripeBundle\\Tests\\": "/Tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "ocramius/package-versions": true
+        }
     }
-  },
-  "config": {
-    "allow-plugins": {
-      "ocramius/package-versions": true
-    }
-  }
 }
