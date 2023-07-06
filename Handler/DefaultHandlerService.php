@@ -33,7 +33,6 @@ class DefaultHandlerService
         $this
             ->container
             ->get('event_dispatcher')
-            ->dispatch('stripe.' . $stripeEventObject->type, $event);
+            ->dispatch($event, 'stripe.' . $stripeEventObject->type);
     }
-
 }
