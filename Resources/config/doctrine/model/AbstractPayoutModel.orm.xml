@@ -6,7 +6,7 @@
     <mapped-superclass name="Miracode\StripeBundle\Model\AbstractPayoutModel">
         <field name="amount" column="amount" type="integer" />
         <field name="created" column="created" type="integer" />
-        <field name="arrival_date" column="arrival_date" type="integer" />
+        <field name="arrivalDate" column="arrival_date" type="integer" />
         <field name="currency" column="currency" type="string" />
         <field name="description" column="description" type="string" />
         <field name="livemode" column="livemode" type="boolean" />

@@ -22,11 +22,11 @@ abstract class AbstractPayoutModel extends StripeModel
     protected $created;
 
     /**
-     * @StripeObjectParam
+     * @StripeObjectParam(name="arrival_date")
      *
      * @var int
      */
-    protected $arrival_date;
+    protected $arrivalDate;
 
     /**
      * @StripeObjectParam
@@ -113,16 +113,16 @@ abstract class AbstractPayoutModel extends StripeModel
      */
     public function getArrivalDate()
     {
-        return $this->arrival_date;
+        return $this->arrivalDate;
     }
 
     /**
      * @param int $arrival_date
      * @return AbstractPayoutModel
      */
-    public function setArrivalDate($arrival_date)
+    public function setArrivalDate($arrivalDate)
     {
-        $this->arrival_date = $arrival_date;
+        $this->arrivalDate = $arrivalDate;
 
         return $this;
     }
