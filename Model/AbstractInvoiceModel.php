@@ -50,6 +50,13 @@ abstract class AbstractInvoiceModel extends StripeModel
     protected $billing;
 
     /**
+     * @StripeObjectParam(name="billing_reason")
+     *
+     * @var string
+     */
+    protected $billingReason;
+
+    /**
      * @StripeObjectParam
      *
      * @var string
@@ -382,6 +389,25 @@ abstract class AbstractInvoiceModel extends StripeModel
     public function setBilling($billing)
     {
         $this->billing = $billing;
+
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getBillingReason(): string
+    {
+        return $this->billingReason;
+    }
+
+    /**
+     * @param string $billingReason
+     * @return AbstractInvoiceModel
+     */
+    public function setBillingReason(string $billingReason): AbstractInvoiceModel
+    {
+        $this->billingReason = $billingReason;
 
         return $this;
     }

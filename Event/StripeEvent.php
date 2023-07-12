@@ -47,11 +47,14 @@ class StripeEvent extends Event
     const PLAN_DELETED = 'stripe.plan.deleted';
     const PLAN_UPDATED = 'stripe.plan.updated';
     const PAYMENT_INTENT_SUCCEEDED = 'stripe.payment_intent.succeeded';
+    const PAYOUT_PAID = 'stripe.payout.paid';
+    const REPORT_RUN_SUCCEEDED = 'stripe.reporting.report_run.succeeded';
     const SOURCE_CANCELED = 'stripe.source.canceled';
     const SOURCE_CHARGEABLE = 'stripe.source.chargeable';
     const SOURCE_FAILED = 'stripe.source.failed';
     const TAX_RATE_CREATED = 'stripe.tax_rate.created';
     const TAX_RATE_UPDATED = 'stripe.tax_rate.updated';
+    const CHECKOUT_SESSION_COMPLETED = 'stripe.checkout.session.completed';
 
     /**
      * @var StripeObject
