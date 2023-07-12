@@ -117,7 +117,7 @@ abstract class AbstractPayoutModel extends StripeModel
     }
 
     /**
-     * @param int $arrival_date
+     * @param int $arrivalDate
      * @return AbstractPayoutModel
      */
     public function setArrivalDate($arrivalDate)
