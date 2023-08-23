@@ -30,9 +30,13 @@ use Stripe\Stripe,
  */
 class StripeClient extends Stripe
 {
-    public function __construct($stripeApiKey)
+    public function __construct(string $stripeApiKey, $apiVersion = null)
     {
         self::setApiKey($stripeApiKey);
+
+        if(null === $apiVersion){
+            self::setApiVersion($apiVersion);
+        }
 
         return $this;
     }

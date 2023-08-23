@@ -30,6 +30,9 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
+                ->scalarNode('api_version')
+                    ->defaultNull()
+                ->end()
                 ->scalarNode('secret_key')
                     ->isRequired()
                     ->cannotBeEmpty()
