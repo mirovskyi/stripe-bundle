@@ -18,7 +18,7 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('miracode_stripe');
-
+        
         if (method_exists($treeBuilder, 'getRootNode')) {
             $rootNode = $treeBuilder->getRootNode();
         } else {
@@ -30,46 +30,17 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-                ->scalarNode('environment')
-                    ->defaultFalse('prod')
-                ->end()
                 ->scalarNode('api_version')
                     ->defaultNull()
                 ->end()
-                ->arrayNode('prod')
-                    ->children()
-                        ->scalarNode('secret_key')
-                            ->isRequired()
-                            ->cannotBeEmpty()
-                        ->end()
-                        ->scalarNode('perishable_key')
-                            ->isRequired()
-                            ->cannotBeEmpty()
-                        ->end()
-                        ->scalarNode('webhook_secret')
-                            ->defaultNull()
-                        ->end()
-                    ->end()
+                ->scalarNode('secret_key')
+                    ->isRequired()
+                    ->cannotBeEmpty()
                 ->end()
-                ->arrayNode('test')
-                    ->children()
-                        ->scalarNode('secret_key')
-                            ->isRequired()
-                            ->cannotBeEmpty()
-                        ->end()
-                        ->scalarNode('perishable_key')
-                            ->isRequired()
-                            ->cannotBeEmpty()
-                        ->end()
-                        ->scalarNode('webhook_secret')
-                            ->defaultNull()
-                        ->end()
-                    ->end()
+                ->scalarNode('webhook_secret')
+                    ->defaultNull()
                 ->end()
                 ->booleanNode('use_bundle_subscriber')
-                    ->defaultTrue()
-                ->end()
-                ->booleanNode('verify_stripe_signature')
                     ->defaultTrue()
                 ->end()
                 ->arrayNode('database')

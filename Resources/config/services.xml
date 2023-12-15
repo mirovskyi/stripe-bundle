@@ -8,7 +8,7 @@
         <service id="Miracode\StripeBundle\Controller\WebhookController" public="true">
             <argument type="service" id="event_dispatcher" />
             <call method="setContainer">
-                <argument type="service" id="Symfony\Component\DependencyInjection\ParameterBag\ContainerBagInterface"/>
+                <argument type="service" id="Psr\Container\ContainerInterface"/>
             </call>
             <tag name="container.service_subscriber"/>
         </service>
@@ -16,14 +16,7 @@
                  class="Miracode\StripeBundle\Transformer\AnnotationTransformer">
         </service>
         <service id="Miracode\StripeBundle\Stripe\StripeClient">
-            <argument type="collection">
-                <argument key="environment">%miracode_stripe.environment%</argument>
-                <argument key="secret_key">%miracode_stripe.secret_key%</argument>
-                <argument key="perishable_key">%miracode_stripe.perishable_key%</argument>
-                <argument key="secret_key_test">%miracode_stripe.test.secret_key%</argument>
-                <argument key="perishable_key_test">%miracode_stripe.test.perishable_key%</argument>
-                <argument key="stripe_version">%miracode_stripe.api_version%</argument>
-            </argument>
+            <argument>%miracode_stripe.secret_key%</argument>
         </service>
     </services>
 </container>
