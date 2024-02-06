@@ -1,12 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: mark ogilvie
- *
- * Date: 19/11/18
- * Time: 18:55
- */
-
 namespace Miracode\StripeBundle\Stripe;
 
 use Stripe\Card;
@@ -16,6 +8,7 @@ use Stripe\Stripe,
     Stripe\Coupon,
     Stripe\Plan,
     Stripe\Product,
+    Stripe\Price,
     Stripe\Subscription,
     Stripe\SubscriptionItem,
     Stripe\Refund;

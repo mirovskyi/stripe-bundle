@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+
+    <mapped-superclass name="Miracode\StripeBundle\Model\AbstractPriceModel">
+        <field name="active" column="active" type="boolean" />
+        <field name="currency" column="currency" type="string" />
+        <field name="metadata" column="metadata" type="array" nullable="true" />
+        <field name="nickname" column="nickname" type="string" nullable="true" />
+        <field name="product" column="product" type="string" />
+        <field name="recurring" column="recurring" type="array" nullable="true" />
+        <field name="type" column="type" type="string" />
+        <field name="unitAmount" column="unit_amount" type="integer" nullable="true" />
+        <field name="object" column="object" type="string" />
+        <field name="billingScheme" column="billing_scheme" type="string" />
+        <field name="created" column="created" type="integer" />
+        <field name="currencyOptions" column="currency_options" type="array" nullable="true" />
+        <field name="customUnitAmount" column="custom_unit_amount" type="array" nullable="true" />
+        <field name="livemode" column="livemode" type="boolean" />
+        <field name="lookupKey" column="lookup_key" type="string" nullable="true" />
+        <field name="taxBehaviour" column="tax_behaviour" type="string" nullable="true" />
+        <field name="tiers" column="tiers" type="array" nullable="true" />
+        <field name="tiersMode" column="tiers_mode" type="string" nullable="true" />
+        <field name="transformQuality" column="transform_quality" type="array" nullable="true" />
+        <field name="unitAmountDecimal" column="unit_amount_decimal" type="string" nullable="true" />
+        <id name="id" column="id" type="string" length="180" />
+    </mapped-superclass>
+
+</doctrine-mapping>

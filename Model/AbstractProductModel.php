@@ -6,373 +6,413 @@ use Miracode\StripeBundle\Annotation\StripeObjectParam;
 
 abstract class AbstractProductModel extends StripeModel
 {
-    /**
-     * @StripeObjectParam
-     *
-     * @var string
-     */
-    protected $object;
 
     /**
      * @StripeObjectParam
-     *
-     * @var boolean
      */
-    protected $active;
+    protected bool $active;
+
+    /**
+     * @StripeObjectParam(name="default_price")
+     */
+    protected ?string $defaultPrice = null;
 
     /**
      * @StripeObjectParam
-     *
-     * @var array
      */
-    protected $attributes;
+    protected ?string $description = null;
 
     /**
      * @StripeObjectParam
-     *
-     * @var int
      */
-    protected $created;
+    protected array $metadata;
 
     /**
      * @StripeObjectParam
-     *
-     * @var array
      */
-    protected $deactivateOn;
+    protected string $name;
 
     /**
      * @StripeObjectParam
-     *
-     * @var string
      */
-    protected $description;
+    protected string $object;
 
     /**
      * @StripeObjectParam
-     *
-     * @var array
      */
-    protected $images;
+    protected int $created;
 
     /**
      * @StripeObjectParam
-     *
-     * @var boolean
      */
-    protected $livemode;
+    protected array $features;
 
     /**
      * @StripeObjectParam
-     *
-     * @var array
      */
-    protected $metadata;
+    protected array $images;
 
     /**
      * @StripeObjectParam
-     *
-     * @var string
      */
-    protected $name;
+    protected bool $livemode;
+
+    /**
+     * @StripeObjectParam(name="package_dimensions")
+     */
+    protected ?array $packageDimensions = null;
 
     /**
      * @StripeObjectParam
-     *
-     * @var array
      */
-    protected $packageDimensions;
+    protected ?bool $shippable = null;
+
+    /**
+     * @StripeObjectParam(name="statement_descriptor")
+     */
+    protected ?string $statementDescriptor = null;
+
+    /**
+     * @StripeObjectParam(name="tax_code")
+     */
+    protected ?string $taxCode = null;
+
+    /**
+     * @StripeObjectParam(name="unit_label")
+     */
+    protected ?string $unitLabel = null;
 
     /**
      * @StripeObjectParam
-     *
-     * @var boolean
      */
-    protected $shippable;
+    protected ?int $updated = null;
 
     /**
      * @StripeObjectParam
-     *
-     * @var string
      */
-    protected $statementDescriptor;
-
-    /**
-     * @StripeObjectParam
-     *
-     * @var string
-     */
-    protected $type;
-
-    /**
-     * @StripeObjectParam
-     *
-     * @var int
-     */
-    protected $updated;
-
-    /**
-     * @StripeObjectParam
-     *
-     * @var string
-     */
-    protected $url;
-
-    /**
-     * @return string
-     */
-    public function getObject()
-    {
-        return $this->object;
-    }
-
-    /**
-     * @param string $object
-     */
-    public function setObject($object)
-    {
-        $this->object = $object;
-    }
+    protected ?string $url = null;
 
     /**
      * @return bool
      */
-    public function isActive()
+    public function isActive(): bool
     {
         return $this->active;
     }
 
     /**
      * @param bool $active
+     * @return AbstractProductModel
      */
-    public function setActive($active)
+    public function setActive(bool $active): AbstractProductModel
     {
         $this->active = $active;
+
+        return $this;
     }
 
     /**
-     * @return array
+     * @return string|null
      */
-    public function getAttributes()
+    public function getDefaultPrice(): ?string
     {
-        return $this->attributes;
+        return $this->defaultPrice;
     }
 
     /**
-     * @param array $attributes
+     * @param string|null $defaultPrice
+     * @return AbstractProductModel
      */
-    public function setAttributes($attributes)
+    public function setDefaultPrice(?string $defaultPrice): AbstractProductModel
     {
-        $this->attributes = $attributes;
+        $this->defaultPrice = $defaultPrice;
+
+        return $this;
     }
 
     /**
-     * @return int
+     * @return string|null
      */
-    public function getCreated()
-    {
-        return $this->created;
-    }
-
-    /**
-     * @param int $created
-     */
-    public function setCreated($created)
-    {
-        $this->created = $created;
-    }
-
-    /**
-     * @return array
-     */
-    public function getDeactivateOn()
-    {
-        return $this->deactivateOn;
-    }
-
-    /**
-     * @param array $deactivateOn
-     */
-    public function setDeactivateOn($deactivateOn)
-    {
-        $this->deactivateOn = $deactivateOn;
-    }
-
-    /**
-     * @return string
-     */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
 
     /**
-     * @param string $description
+     * @param string|null $description
+     * @return AbstractProductModel
      */
-    public function setDescription($description)
+    public function setDescription(?string $description): AbstractProductModel
     {
         $this->description = $description;
+
+        return $this;
     }
 
     /**
      * @return array
      */
-    public function getImages()
-    {
-        return $this->images;
-    }
-
-    /**
-     * @param array $images
-     */
-    public function setImages($images)
-    {
-        $this->images = $images;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isLivemode()
-    {
-        return $this->livemode;
-    }
-
-    /**
-     * @param bool $livemode
-     */
-    public function setLivemode($livemode)
-    {
-        $this->livemode = $livemode;
-    }
-
-    /**
-     * @return array
-     */
-    public function getMetadata()
+    public function getMetadata(): array
     {
         return $this->metadata;
     }
 
     /**
      * @param array $metadata
+     * @return AbstractProductModel
      */
-    public function setMetadata($metadata)
+    public function setMetadata(array $metadata): AbstractProductModel
     {
         $this->metadata = $metadata;
+
+        return $this;
     }
 
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
     /**
      * @param string $name
+     * @return AbstractProductModel
      */
-    public function setName($name)
+    public function setName(string $name): AbstractProductModel
     {
         $this->name = $name;
-    }
 
-    /**
-     * @return array
-     */
-    public function getPackageDimensions()
-    {
-        return $this->packageDimensions;
-    }
-
-    /**
-     * @param array $packageDimensions
-     */
-    public function setPackageDimensions($packageDimensions)
-    {
-        $this->packageDimensions = $packageDimensions;
-    }
-
-    /**
-     * @return bool
-     */
-    public function isShippable()
-    {
-        return $this->shippable;
-    }
-
-    /**
-     * @param bool $shippable
-     */
-    public function setShippable($shippable)
-    {
-        $this->shippable = $shippable;
+        return $this;
     }
 
     /**
      * @return string
      */
-    public function getStatementDescriptor()
+    public function getObject(): string
     {
-        return $this->statementDescriptor;
+        return $this->object;
     }
 
     /**
-     * @param string $statementDescriptor
+     * @param string $object
+     * @return AbstractProductModel
      */
-    public function setStatementDescriptor($statementDescriptor)
+    public function setObject(string $object): AbstractProductModel
     {
-        $this->statementDescriptor = $statementDescriptor;
-    }
+        $this->object = $object;
 
-    /**
-     * @return string
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * @param string $type
-     */
-    public function setType($type)
-    {
-        $this->type = $type;
+        return $this;
     }
 
     /**
      * @return int
      */
-    public function getUpdated()
+    public function getCreated(): int
+    {
+        return $this->created;
+    }
+
+    /**
+     * @param int $created
+     * @return AbstractProductModel
+     */
+    public function setCreated(int $created): AbstractProductModel
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getFeatures(): array
+    {
+        return $this->features;
+    }
+
+    /**
+     * @param array $features
+     * @return AbstractProductModel
+     */
+    public function setFeatures(array $features): AbstractProductModel
+    {
+        $this->features = $features;
+
+        return $this;
+    }
+
+    /**
+     * @return array
+     */
+    public function getImages(): array
+    {
+        return $this->images;
+    }
+
+    /**
+     * @param array $images
+     * @return AbstractProductModel
+     */
+    public function setImages(array $images): AbstractProductModel
+    {
+        $this->images = $images;
+
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isLivemode(): bool
+    {
+        return $this->livemode;
+    }
+
+    /**
+     * @param bool $livemode
+     * @return AbstractProductModel
+     */
+    public function setLivemode(bool $livemode): AbstractProductModel
+    {
+        $this->livemode = $livemode;
+
+        return $this;
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getPackageDimensions(): ?array
+    {
+        return $this->packageDimensions;
+    }
+
+    /**
+     * @param array|null $packageDimensions
+     * @return AbstractProductModel
+     */
+    public function setPackageDimensions(?array $packageDimensions): AbstractProductModel
+    {
+        $this->packageDimensions = $packageDimensions;
+
+        return $this;
+    }
+
+    /**
+     * @return bool|null
+     */
+    public function getShippable(): ?bool
+    {
+        return $this->shippable;
+    }
+
+    /**
+     * @param bool|null $shippable
+     * @return AbstractProductModel
+     */
+    public function setShippable(?bool $shippable): AbstractProductModel
+    {
+        $this->shippable = $shippable;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getStatementDescriptor(): ?string
+    {
+        return $this->statementDescriptor;
+    }
+
+    /**
+     * @param string|null $statementDescriptor
+     * @return AbstractProductModel
+     */
+    public function setStatementDescriptor(?string $statementDescriptor): AbstractProductModel
+    {
+        $this->statementDescriptor = $statementDescriptor;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getTaxCode(): ?string
+    {
+        return $this->taxCode;
+    }
+
+    /**
+     * @param string|null $taxCode
+     * @return AbstractProductModel
+     */
+    public function setTaxCode(?string $taxCode): AbstractProductModel
+    {
+        $this->taxCode = $taxCode;
+
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getUnitLabel(): ?string
+    {
+        return $this->unitLabel;
+    }
+
+    /**
+     * @param string|null $unitLabel
+     * @return AbstractProductModel
+     */
+    public function setUnitLabel(?string $unitLabel): AbstractProductModel
+    {
+        $this->unitLabel = $unitLabel;
+
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getUpdated(): ?int
     {
         return $this->updated;
     }
 
     /**
-     * @param int $updated
+     * @param int|null $updated
+     * @return AbstractProductModel
      */
-    public function setUpdated($updated)
+    public function setUpdated(?int $updated): AbstractProductModel
     {
         $this->updated = $updated;
+
+        return $this;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getUrl()
+    public function getUrl(): ?string
     {
         return $this->url;
     }
 
     /**
-     * @param string $url
+     * @param string|null $url
+     * @return AbstractProductModel
      */
-    public function setUrl($url)
+    public function setUrl(?string $url): AbstractProductModel
     {
         $this->url = $url;
-    }
 
+        return $this;
+    }
 
 }

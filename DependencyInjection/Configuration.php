@@ -65,6 +65,7 @@ class Configuration implements ConfigurationInterface
                             ->scalarNode('invoice')->cannotBeEmpty()->end()
                             ->scalarNode('payout')->cannotBeEmpty()->end()
                             ->scalarNode('product')->cannotBeEmpty()->end()
+                            ->scalarNode('price')->cannotBeEmpty()->end()
                             ->scalarNode('plan')->cannotBeEmpty()->end()
                             ->scalarNode('refund')->cannotBeEmpty()->end()
                             ->scalarNode('subscription')->cannotBeEmpty()->end()

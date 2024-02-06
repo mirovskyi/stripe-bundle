@@ -10,9 +10,6 @@ use Stripe\StripeObject;
 
 class AnnotationTransformer implements TransformerInterface
 {
-    /**
-     * {@inheritdoc}
-     */
     public function transform(
         StripeObject $stripeObject,
         StripeModelInterface $model
@@ -20,18 +17,21 @@ class AnnotationTransformer implements TransformerInterface
         $r = new \ReflectionObject($model);
         $annotationReader = new AnnotationReader();
         $props = $r->getProperties();
+
         foreach ($props as $prop) {
             /** @var StripeObjectParam $stripeObjectParam */
             $stripeObjectParam = $annotationReader->getPropertyAnnotation(
                 $prop,
                 "Miracode\StripeBundle\Annotation\StripeObjectParam"
             );
+
             if (!$stripeObjectParam) {
                 continue;
             }
             if (!$name = $stripeObjectParam->name) {
                 $name = strtolower($prop->getName());
             }
+
             if (!isset($stripeObject[$name])) {
                 continue;
             }
@@ -46,10 +46,10 @@ class AnnotationTransformer implements TransformerInterface
                         $value = $value[$path];
                     }
                 } else {
-                    if (isset($value->object) &&
-                        $value->object == StripeObjectType::COLLECTION
+                    if (isset($value->object)
+                        && StripeObjectType::COLLECTION == $value->object
                     ) {
-                        $value = array_map(function(StripeObject $obj) {
+                        $value = array_map(function (StripeObject $obj) {
                             return $obj->toArray(true);
                         }, $value->data);
                     } else {
@@ -58,7 +58,9 @@ class AnnotationTransformer implements TransformerInterface
                 }
             }
 
-            $setter = 'set' . ucfirst($prop->getName());
+            dump($prop->getName());
+            dump($value);
+            $setter = 'set'.ucfirst($prop->getName());
             call_user_func([$model, $setter], $value);
         }
     }

@@ -5,13 +5,10 @@ namespace Miracode\StripeBundle\Manager\Doctrine;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Miracode\StripeBundle\Manager\ModelManagerInterface;
-use Miracode\StripeBundle\Model\AbstractCustomerModel;
-use Miracode\StripeBundle\Model\AbstractProductModel;
 use Miracode\StripeBundle\Model\SafeDeleteModelInterface;
 use Miracode\StripeBundle\Model\StripeModelInterface;
 use Miracode\StripeBundle\StripeException;
 use Miracode\StripeBundle\Transformer\TransformerInterface;
-use Stripe\Customer;
 use Stripe\StripeObject;
 
 class DoctrineORMModelManager implements ModelManagerInterface
@@ -33,8 +30,7 @@ class DoctrineORMModelManager implements ModelManagerInterface
 
     /**
      * DoctrineORMModelManager constructor.
-     * @param EntityManagerInterface $objectManager
-     * @param TransformerInterface $transformer
+     *
      * @param array $modelClasses
      */
     public function __construct(
@@ -48,9 +44,7 @@ class DoctrineORMModelManager implements ModelManagerInterface
     }
 
     /**
-     * Is stripe object supported by model manager
-     *
-     * @param StripeObject $object
+     * Is stripe object supported by model manager.
      *
      * @return bool
      */
@@ -60,9 +54,7 @@ class DoctrineORMModelManager implements ModelManagerInterface
     }
 
     /**
-     * Retrieve model by stripe object data
-     *
-     * @param StripeObject $object
+     * Retrieve model by stripe object data.
      *
      * @return StripeModelInterface|object|null
      */
@@ -72,15 +64,16 @@ class DoctrineORMModelManager implements ModelManagerInterface
         $modelClass = $this->modelClass($object);
 
         return $this->objectManager->getRepository($modelClass)->findOneBy([
-            'id' => $object->id
+            'id' => $object->id,
         ]);
     }
 
     /**
-     * Retrieve model by stripe ID and stripe object type
+     * Retrieve model by stripe ID and stripe object type.
      *
      * @param string $id
      * @param string $objectType
+     *
      * @return StripeModelInterface|null
      */
     public function retrieveById($id, $objectType)
@@ -92,9 +85,8 @@ class DoctrineORMModelManager implements ModelManagerInterface
     }
 
     /**
-     * Save stripe object in database
+     * Save stripe object in database.
      *
-     * @param StripeObject $object
      * @param bool $flush
      *
      * @return StripeModelInterface
@@ -106,6 +98,7 @@ class DoctrineORMModelManager implements ModelManagerInterface
             $model = $this->createModel($object);
             $this->objectManager->persist($model);
         }
+
         $this->modelTransformer->transform($object, $model);
         if ($flush) {
             $this->objectManager->flush();
@@ -116,9 +109,8 @@ class DoctrineORMModelManager implements ModelManagerInterface
 
     /**
      * Remove model from database by stripe object data
-     * Return model object that was removed or NULL if model does not exists
+     * Return model object that was removed or NULL if model does not exists.
      *
-     * @param StripeObject $object
      * @param bool $flush
      *
      * @return StripeModelInterface|null
@@ -142,22 +134,17 @@ class DoctrineORMModelManager implements ModelManagerInterface
     }
 
     /**
-     * Get stripe object type
-     *
-     * @param StripeObject $object
+     * Get stripe object type.
      *
      * @return string
+     *
      * @throws StripeException
      */
     protected function getObjectType(StripeObject $object)
     {
         if (empty($object->object)) {
             if (isset($object->deleted) && isset($object->id)) {
-                throw new StripeException(sprintf(
-                    'Couldn\'t detect stripe object type. '
-                    . 'Stripe object with ID `%s` has been already deleted.',
-                    $object->id
-                ));
+                throw new StripeException(sprintf('Couldn\'t detect stripe object type. Stripe object with ID `%s` has been already deleted.', $object->id));
             }
             throw new StripeException('Couldn\'t detect stripe object type.');
         }
@@ -166,28 +153,19 @@ class DoctrineORMModelManager implements ModelManagerInterface
     }
 
     /**
-     * Check object support
-     *
-     * @param \Stripe\StripeObject $object
+     * Check object support.
      *
      * @throws \Miracode\StripeBundle\StripeException
      */
     protected function checkSupport(StripeObject $object)
     {
         if (!$this->support($object)) {
-            throw new StripeException(sprintf(
-                'Stripe object `%1$s` does not support. '
-                . 'Please specify model class for object type `%1$s` '
-                . 'in miracode_stripe.database.model.%1$s',
-                $this->getObjectType($object)
-            ));
+            throw new StripeException(sprintf('Stripe object `%1$s` does not support. Please specify model class for object type `%1$s` in miracode_stripe.database.model.%1$s', $this->getObjectType($object)));
         }
     }
 
     /**
-     * Get model class name for specified stripe object
-     *
-     * @param StripeObject $object
+     * Get model class name for specified stripe object.
      *
      * @return string
      */
@@ -197,23 +175,19 @@ class DoctrineORMModelManager implements ModelManagerInterface
     }
 
     /**
-     * Create new model object
-     *
-     * @param StripeObject $object
+     * Create new model object.
      *
      * @return StripeModelInterface
      */
     protected function createModel(StripeObject $object)
     {
-
         $className = $this->modelClass($object);
         $class = new $className();
 
-        if($object->id){
+        if ($object->id) {
             $class->setId($object->id);
         }
 
         return $class;
-
     }
 }

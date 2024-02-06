@@ -8,27 +8,21 @@ class StripeModel implements StripeModelInterface
 {
     /**
      * @StripeObjectParam(name="id")
-     *
-     * @var string
      */
-    protected $id;
+    protected string $id;
 
     /**
-     * Retrieve stripe object ID
-     *
-     * @return string
+     * Retrieve stripe object ID.
      */
-    public function getId()
+    public function getId(): string
     {
         return $this->id;
     }
 
     /**
-     * @param string $id
-     *
      * @return $this
      */
-    public function setId($id)
+    public function setId(string $id): static
     {
         $this->id = $id;
 
