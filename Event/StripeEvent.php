@@ -43,6 +43,12 @@ class StripeEvent extends Event
     public const INVOICE_UPCOMING = 'stripe.invoice.upcoming';
     public const INVOICE_UPDATED = 'stripe.invoice.updated';
     public const INVOICE_VOIDED = 'stripe.invoice.voided';
+    public const PRODUCT_CREATED = 'stripe.product.created';
+    public const PRODUCT_DELETED = 'stripe.product.deleted';
+    public const PRODUCT_UPDATED = 'stripe.product.updated';
+    public const PRICE_CREATED = 'stripe.price.created';
+    public const PRICE_DELETED = 'stripe.price.deleted';
+    public const PRICE_UPDATED = 'stripe.price.updated';
     public const PLAN_CREATED = 'stripe.plan.created';
     public const PLAN_DELETED = 'stripe.plan.deleted';
     public const PLAN_UPDATED = 'stripe.plan.updated';
