@@ -58,8 +58,6 @@ class AnnotationTransformer implements TransformerInterface
                 }
             }
 
-            dump($prop->getName());
-            dump($value);
             $setter = 'set'.ucfirst($prop->getName());
             call_user_func([$model, $setter], $value);
         }
