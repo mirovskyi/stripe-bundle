@@ -57,7 +57,6 @@ class StripeEventSubscriber implements EventSubscriberInterface
             StripeEvent::PRODUCT_UPDATED => 'onStripeEvent',
             StripeEvent::PRICE_CREATED => 'onStripeEvent',
             StripeEvent::PRICE_UPDATED => 'onStripeEvent',
-            StripeEvent::PLAN_UPDATED => 'onStripeEvent',
             StripeEvent::PLAN_CREATED => 'onStripeEvent',
             StripeEvent::PLAN_UPDATED => 'onStripeEvent',
             StripeEvent::SOURCE_CANCELED => 'onStripeEvent',
