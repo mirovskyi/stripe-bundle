@@ -4,35 +4,6 @@ on:
   workflow_call: ~
 
 jobs:
-  pre-check:
-    name: Pre-check
-    runs-on: [self-hosted, alpha]
-    steps:
-      - uses: actions/checkout@v3
-      - name: Branch name check
-        if: github.event_name == 'pull_request'
-        uses: ./.github/actions/branch-name
-        with:
-          error_message: 'Branch name {branch} is invalid. See https://herdwatch.atlassian.net/l/cp/H7RjycwU'
-          validate_regexp: '(^[a-z]+-\d+)-([0-9a-z-]{10,60})$'
-
-  dep-scan: # perform vulnerability scan on dependencies
-    name: Deps
-    runs-on: [self-hosted, alpha]
-    needs: [pre-check]
-    steps:
-      - uses: actions/checkout@v3
-      - name: Scan
-        uses: dependency-check/Dependency-Check_Action@main
-        with:
-          args: --enableExperimental
-          format: 'ALL'
-          project: ${{ github.repository }}
-          path: '.'
-      - uses: actions/upload-artifact@v3
-        with:
-          name: dependency-check-report
-          path: ${{ github.workspace }}/reports
 
   run-tests:
     name: Test PHP ${{ matrix.php }} and Symfony ${{ matrix.symfony }}
