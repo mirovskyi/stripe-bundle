@@ -3,6 +3,7 @@
 namespace Miracode\StripeBundle\Tests\DependencyInjection;
 
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Miracode\StripeBundle\DependencyInjection\MiracodeStripeExtension;
 use Symfony\Component\DependencyInjection\Definition;
@@ -10,16 +11,14 @@ use Symfony\Component\Yaml\Parser;
 
 class MiracodeStripeExtensionTest extends TestCase
 {
-    /**
-     * @expectedException \Symfony\Component\Config\Definition\Exception\InvalidConfigurationException
-     */
-    public function testEmptyConfiguration()
+    final public function testEmptyConfiguration(): void
     {
         $extension = new MiracodeStripeExtension();
+        $this->expectException(InvalidConfigurationException::class);
         $extension->load([], new ContainerBuilder());
     }
 
-    public function testStripeSecretKey()
+    final public function testStripeSecretKey(): void
     {
         $config = $this->getSimpleConfig();
         $container = new ContainerBuilder();
@@ -31,7 +30,7 @@ class MiracodeStripeExtensionTest extends TestCase
         );
     }
 
-    public function testConfigWithoutDatabase()
+    final public function testConfigWithoutDatabase(): void
     {
         $config = $this->getSimpleConfig();
         $container = new ContainerBuilder();
@@ -44,7 +43,7 @@ class MiracodeStripeExtensionTest extends TestCase
         $this->assertFalse($container->hasParameter('miracode_stripe.model_classes'));
     }
 
-    public function testDefaultDatabaseConfiguration()
+    final public function testDefaultDatabaseConfiguration(): void
     {
         $config = $this->getSimpleConfigWithDatabase();
         $container = new ContainerBuilder();
@@ -77,7 +76,7 @@ class MiracodeStripeExtensionTest extends TestCase
         $this->assertTrue($container->has('miracode_stripe.subscriber.stripe_event'));
     }
 
-    public function testFullConfiguration()
+    final public function testFullConfiguration(): void
     {
         $config = $this->getFullConfig();
         $container = new ContainerBuilder();

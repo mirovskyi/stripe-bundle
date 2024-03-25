@@ -59,27 +59,20 @@ class StripeEvent extends Event
     public const SOURCE_CHARGEABLE = 'stripe.source.chargeable';
     public const SOURCE_FAILED = 'stripe.source.failed';
 
-    /**
-     * @var StripeObject
-     */
-    protected $event;
+    protected StripeObject $event;
 
     /**
      * StripeEventType constructor.
-     *
-     * @param StripeObject $event
      */
-    public function __construct($event)
+    public function __construct(StripeObject $event)
     {
         $this->event = $event;
     }
 
     /**
      * Get stripe event object
-     *
-     * @return StripeObject
      */
-    public function getEvent()
+    public function getEvent(): StripeObject
     {
         return $this->event;
     }
@@ -87,10 +80,9 @@ class StripeEvent extends Event
     /**
      * Get event data object
      *
-     * @return StripeObject
      * @throws StripeException
      */
-    public function getDataObject()
+    public function getDataObject(): StripeObject
     {
         $event = $this->getEvent();
         if (!isset($event['data']) || !isset($event['data']['object'])) {
