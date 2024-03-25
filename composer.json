@@ -58,7 +58,6 @@
         }
     },
     "scripts": {
-        "cs": "./vendor/bin/php-cs-fixer fix --diff --verbose",
         "phpunit": "./vendor/bin/phpunit"
     }
 }
