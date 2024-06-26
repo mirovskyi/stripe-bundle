@@ -10,7 +10,7 @@ class StripeEvent extends Event
 {
     const CHARGE_CAPTURED = 'stripe.charge.captured';
     const CHARGE_FAILED = 'stripe.charge.failed';
-    const CHARGE_PENDING = 'charge.pending';
+    const CHARGE_PENDING = 'stripe.charge.pending';
     const CHARGE_REFUNDED = 'stripe.charge.refunded';
     const CHARGE_SUCCEEDED = 'stripe.charge.succeeded';
     const CHARGE_UPDATED = 'stripe.charge.updated';
