@@ -14,9 +14,9 @@ class StripeEvent extends Event
     public const CHARGE_REFUNDED = 'stripe.charge.refunded';
     public const CHARGE_SUCCEEDED = 'stripe.charge.succeeded';
     public const CHARGE_UPDATED = 'stripe.charge.updated';
-    public const CHARGE_DISPUTE_OPENED = 'charge.dispute.opened';
-    public const CHARGE_DISPUTE_FUNDS_WITHDRAWN = 'charge.dispute.funds_withdrawn';
-    public const CHARGE_DISPUTE_CLOSED = 'charge.dispute.closed';
+    public const CHARGE_DISPUTE_OPENED = 'stripe.charge.dispute.opened';
+    public const CHARGE_DISPUTE_FUNDS_WITHDRAWN = 'stripe.charge.dispute.funds_withdrawn';
+    public const CHARGE_DISPUTE_CLOSED = 'stripe.charge.dispute.closed';
     public const COUPON_CREATED = 'stripe.coupon.created';
     public const COUPON_DELETED = 'stripe.coupon.deleted';
     public const COUPON_UPDATED = 'stripe.coupon.updated';
