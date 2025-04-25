@@ -19,7 +19,7 @@
         <field name="valid" column="valid" type="boolean" nullable="true" />
 
         <unique-constraints>
-            <unique-constraint columns="stripe_id" name="stripe_id_idx" />
+            <unique-constraint columns="stripe_id" />
         </unique-constraints>
     </mapped-superclass>
 

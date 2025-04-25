@@ -17,7 +17,7 @@
         <field name="trialPeriodDays" column="trial_period_days" type="integer" nullable="true" />
 
         <unique-constraints>
-            <unique-constraint columns="stripe_id" name="stripe_id_idx" />
+            <unique-constraint columns="stripe_id" />
         </unique-constraints>
     </mapped-superclass>
 

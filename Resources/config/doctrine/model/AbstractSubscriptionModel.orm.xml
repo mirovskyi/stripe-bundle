@@ -28,7 +28,7 @@
         <field name="trialStart" column="trial_start" type="integer" nullable="true" />
 
         <unique-constraints>
-            <unique-constraint columns="stripe_id" name="stripe_id_idx" />
+            <unique-constraint columns="stripe_id" />
         </unique-constraints>
     </mapped-superclass>
 

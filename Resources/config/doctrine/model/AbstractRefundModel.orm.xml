@@ -18,7 +18,7 @@
         <field name="stripeId" column="stripe_id" type="string" />
 
         <unique-constraints>
-            <unique-constraint columns="stripe_id" name="stripe_id_idx" />
+            <unique-constraint columns="stripe_id" />
         </unique-constraints>
     </mapped-superclass>
 
